@@ -156,11 +156,11 @@ with col1:
                 acc_norm_filtered = np.sqrt(
                     acc_x_filtered**2+acc_y_filtered**2+acc_z_filtered**2)
 
-                for index, value in enumerate(acc_norm_filtered):
+                for index, value in enumerate(acc_norm_filtered[100:]):
                     if value > 2:
                         lag = time_interpolated[index]
                         time_interpolated = time_interpolated - \
-                            time_interpolated[index]
+                            time_interpolated[index+100]
                         break
 
                 # Carregar o arquivo de texto
