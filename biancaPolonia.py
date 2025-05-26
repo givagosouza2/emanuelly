@@ -36,7 +36,7 @@ with col1:
         cutoff = 2
         time_original_kinem = np.arange(0, len(disp_y)) / original_fs
 
-        dy_dx = np.diff(disp_z[100:500]) / np.diff(time_original_kinem)
+        dy_dx = np.diff(disp_z[100:500]) / np.diff(time_original_kinem[100:500])
         baseline = np.mean(dy_dx)
         sd_baseline = np.std(dy_dx)
         for index, value in enumerate(dy_dx):
