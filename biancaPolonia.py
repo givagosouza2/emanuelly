@@ -39,7 +39,7 @@ with col1:
         baseline = np.mean(disp_z[100:500])
         sd_baseline = np.std(disp_z[100:500])
         for index, value in enumerate(disp_z[100:500]):
-            if value > baseline + 2*sd_baseline or value < baseline + 2*sd_baseline:
+            if value > baseline + 4*sd_baseline or value < baseline + 4*sd_baseline:
                 time_original_kinem = time_original_kinem - \
                     time_original_kinem[index+100]
                 break
