@@ -204,7 +204,7 @@ with col1:
                             if value > 0.1:
                                 lag = time_interpolated_gyro[index]
                                 time_interpolated_gyro = time_interpolated_gyro - \
-                                    time_interpolated[index]
+                                    time_interpolated_gyro[index]
                                 break
                         
 
