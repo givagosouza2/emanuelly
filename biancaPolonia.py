@@ -184,7 +184,7 @@ with col1:
                         time_ = np.arange(start=tempo_gyro[0], stop=tempo_gyro[len(tempo_gyro)-1], step=10)
                         x_ = interpf(time_)
                         time_interpolated_gyro, gyro_x_interpolated = time_/1000, x_
-                        interpf = scipy.interpolate.interp1d(tempo_gyro, hyro_y)
+                        interpf = scipy.interpolate.interp1d(tempo_gyro, gyro_y)
                         time_ = np.arange(start=tempo_gyro[0], stop=tempo_gyro[len(tempo_gyro)-1], step=10)
                         y_ = interpf(time_)
                         time_interpolated_gyro, gyro_y_interpolated = time_/1000, y_
