@@ -200,12 +200,12 @@ with col1:
 
                         gyro_norm_filtered = np.sqrt(
                             gyro_x_filtered**2+gyro_y_filtered**2+gyro_z_filtered**2)
-                        #for index, value in enumerate(acc_norm_filtered):
-                        #    if value > 0.1:
-                        #        lag = time_interpolated_gyro[index]
-                        #        time_interpolated_gyro = time_interpolated_gyro - \
-                        #            time_interpolated[index]
-                        #        break
+                        for index, value in enumerate(gyro_norm_filtered):
+                            if value > 0.1:
+                                lag = time_interpolated_gyro[index]
+                                time_interpolated_gyro = time_interpolated_gyro - \
+                                    time_interpolated[index]
+                                break
                         time_interpolated_gyro = time_interpolated_gyro - time_interpolated[index]
 
                         with col1:
