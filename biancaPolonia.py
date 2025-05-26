@@ -36,9 +36,10 @@ with col1:
         cutoff = 2
         time_original_kinem = np.arange(0, len(disp_y)) / original_fs
 
-        picoSalto = np.max(disp_z)
+        baseline = np.mean(disp_z[100:500])
+        sd_baseline = sp.std(disp_z[100:500])
         for index, value in enumerate(disp_z):
-            if value == picoSalto:
+            if value > baseline + 2*sd_baseline or value < baseline + 2*sd_baseline:
                 time_original_kinem = time_original_kinem - \
                     time_original_kinem[index]
                 break
