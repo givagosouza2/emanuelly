@@ -209,11 +209,11 @@ with col1:
 
                         gyro_norm_filtered = np.sqrt(
                             gyro_x_filtered**2+gyro_y_filtered**2+gyro_z_filtered**2)
-                        for index, value in enumerate(gyro_norm_filtered):
+                        for index, value in enumerate(gyro_norm_filtered[100:]):
                             if value > 0.5:
                                 lag = time_interpolated_gyro[index]
                                 time_interpolated_gyro = time_interpolated_gyro - \
-                                    time_interpolated[index]
+                                    time_interpolated_gyro[index+100]
                                 break
                         
 
