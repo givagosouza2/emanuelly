@@ -109,21 +109,34 @@ with col1:
                 acc_y = df.iloc[:, 2].values
                 acc_z = df.iloc[:, 3].values
 
-                # Supõe que os dados têm uma frequência inicial uniforme
-                original_fs = 50
-                time_original = np.arange(0, len(tempo)) / original_fs
+                interpf = scipy.interpolate.interp1d(tempo, acc_x)
+                time_ = np.arange(start=time[0], stop=tempo[len(tempo)-1], step=10)
+                x_ = interpf(time_)
+                time_interpolated, acc_x_interpolated = time_/1000, x_
+                interpf = scipy.interpolate.interp1d(tempo, acc_y)
+                time_ = np.arange(start=time[0], stop=tempo[len(tempo)-1], step=10)
+                y_ = interpf(time_)
+                time_interpolated, acc_y_interpolated = time_/1000, y_
+                interpf = scipy.interpolate.interp1d(tempo, acc_z)
+                time_ = np.arange(start=time[0], stop=tempo[len(tempo)-1], step=10)
+                z_ = interpf(time_)
+                time_interpolated, acc_z_interpolated = time_/1000, z_
+            
+                ## Supõe que os dados têm uma frequência inicial uniforme
+                #original_fs = 50
+                #time_original = np.arange(0, len(tempo)) / original_fs
 
-                # Novo eixo de tempo para interpolação (100 Hz)
-                new_fs = 100
-                time_interpolated = np.arange(0, tempo[-1], 1 / new_fs)
+                ## Novo eixo de tempo para interpolação (100 Hz)
+                #new_fs = 100
+                #time_interpolated = np.arange(0, tempo[-1], 1 / new_fs)
 
                 # Interpolação
-                acc_x_interpolated = interp1d(
-                    time_original, acc_x, kind='linear')(time_interpolated)
-                acc_y_interpolated = interp1d(
-                    time_original, acc_y, kind='linear')(time_interpolated)
-                acc_z_interpolated = interp1d(
-                    time_original, acc_z, kind='linear')(time_interpolated)
+                #acc_x_interpolated = interp1d(
+                #    time_original, acc_x, kind='linear')(time_interpolated)
+                #acc_y_interpolated = interp1d(
+                #    time_original, acc_y, kind='linear')(time_interpolated)
+                #acc_z_interpolated = interp1d(
+                #    time_original, acc_z, kind='linear')(time_interpolated)
 
                 # Detrend
                 acc_x_detrended = detrend(acc_x_interpolated)
