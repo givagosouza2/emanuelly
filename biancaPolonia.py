@@ -317,8 +317,7 @@ with col1:
                                 st.pyplot(fig)
                                 with col3:
                                     fig, ax = plt.subplots(figsize=(10, 4))
-                                    ax.plot(time_interpolated_gyro,
-                                            gyro_norm_filtered, 'k-')
+                                    ax.plot(time_interpolated_gyro,gyro_norm_filtered, 'k-')
                                     ax.plot([0, 0], [0, 2], 'r-')
                                     # Verificação básica para evitar erros
                                     num_ciclos = min(len(onsets), len(offsets))
