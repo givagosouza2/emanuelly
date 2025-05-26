@@ -31,7 +31,7 @@ with col1:
         disp_y = (df.iloc[:, 1].values)/1000
         disp_z = (df.iloc[:, 2].values)/1000
 
-        original_fs = 100
+        original_fs = 120
         new_fs = 100
         cutoff = 2
         time_original_kinem = np.arange(0, len(disp_y)) / original_fs
@@ -198,12 +198,13 @@ with col1:
 
                         gyro_norm_filtered = np.sqrt(
                             gyro_x_filtered**2+gyro_y_filtered**2+gyro_z_filtered**2)
-                        for index, value in enumerate(acc_norm_filtered):
-                            if value > 0.1:
-                                lag = time_interpolated_gyro[index]
-                                time_interpolated_gyro = time_interpolated_gyro - \
-                                    time_interpolated_gyro[index]
-                                break
+                        #for index, value in enumerate(acc_norm_filtered):
+                        #    if value > 0.1:
+                        #        lag = time_interpolated_gyro[index]
+                        #        time_interpolated_gyro = time_interpolated_gyro - \
+                        #            time_interpolated[index]
+                        #        break
+                        time_interpolated_gyro = time_interpolated_gyro - time_interpolated[index]
 
                         with col1:
                             fig, ax = plt.subplots(figsize=(10, 4))
