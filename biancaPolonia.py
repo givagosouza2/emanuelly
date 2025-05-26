@@ -206,7 +206,7 @@ with col1:
                                 time_interpolated_gyro = time_interpolated_gyro - \
                                     time_interpolated[index]
                                 break
-                        time_interpolated_gyro = time_interpolated
+                        
 
                         with col1:
                             fig, ax = plt.subplots(figsize=(10, 4))
