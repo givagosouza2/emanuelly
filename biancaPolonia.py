@@ -192,25 +192,7 @@ with col1:
                         time_ = np.arange(start=tempo_gyro[0], stop=tempo_gyro[len(tempo_gyro)-1], step=10)
                         z_ = interpf(time_)
                         time_interpolated_gyro, gyro_z_interpolated = time_/1000, z_
-                
-                        # Supõe que os dados têm uma frequência inicial uniforme
-                        #original_fs = 50
-                        #time_original_gyro = np.arange(
-                        #   0, len(tempo_gyro)) / original_fs
-
-                        # Novo eixo de tempo para interpolação (100 Hz)
-                        #new_fs = 100
-                        #time_interpolated_gyro = np.arange(
-                        #    0, tempo_gyro, 1 / new_fs)
-
-                        # Interpolação
-                        #gyro_x_interpolated = interp1d(
-                        #    time_original_gyro, gyro_x, kind='linear')(time_interpolated_gyro)
-                        #gyro_y_interpolated = interp1d(
-                        #    time_original_gyro, gyro_y, kind='linear')(time_interpolated_gyro)
-                        #gyro_z_interpolated = interp1d(
-                        #    time_original_gyro, gyro_z, kind='linear')(time_interpolated_gyro)
-
+                                      
                         # Detrend
                         gyro_x_detrended = detrend(gyro_x_interpolated)
                         gyro_y_detrended = detrend(gyro_y_interpolated)
@@ -228,7 +210,7 @@ with col1:
                         gyro_norm_filtered = np.sqrt(
                             gyro_x_filtered**2+gyro_y_filtered**2+gyro_z_filtered**2)
                         for index, value in enumerate(gyro_norm_filtered):
-                            if value > 0.1:
+                            if value > 0.5:
                                 lag = time_interpolated_gyro[index]
                                 time_interpolated_gyro = time_interpolated_gyro - \
                                     time_interpolated_gyro[index]
