@@ -42,7 +42,7 @@ with col1:
         for index, value in enumerate(dy_dx):
             if value > baseline + 4*sd_baseline or value < baseline + 4*sd_baseline:
                 time_original_kinem = time_original_kinem - \
-                    time_original_kinem[index+100]
+                    time_original_kinem[index]
                 break
         # Diferença entre tempos consecutivos
         delta_t = np.diff(time_original_kinem)
