@@ -32,13 +32,14 @@ with col1:
         disp_z = (df.iloc[:, 2].values)/1000
 
         original_fs = 120
-        new_fs = 100
+        new_fs = 120
         cutoff = 2
         time_original_kinem = np.arange(0, len(disp_y)) / original_fs
 
-        baseline = np.mean(disp_z[100:500])
-        sd_baseline = np.std(disp_z[100:500])
-        for index, value in enumerate(disp_z[100:500]):
+        dy_dx = np.diff(disp_z[100:500]) / np.diff(time_original_kinem)
+        baseline = np.mean(dy_dx)
+        sd_baseline = np.std(dy_dx)
+        for index, value in enumerate(dy_dx):
             if value > baseline + 4*sd_baseline or value < baseline + 4*sd_baseline:
                 time_original_kinem = time_original_kinem - \
                     time_original_kinem[index+100]
