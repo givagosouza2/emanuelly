@@ -115,7 +115,7 @@ with col1:
 
                 # Novo eixo de tempo para interpolação (100 Hz)
                 new_fs = 100
-                time_interpolated = np.arange(0, time_original[-1], 1 / new_fs)
+                time_interpolated = np.arange(0, tempo[-1], 1 / new_fs)
 
                 # Interpolação
                 acc_x_interpolated = interp1d(
@@ -174,7 +174,7 @@ with col1:
                         # Novo eixo de tempo para interpolação (100 Hz)
                         new_fs = 100
                         time_interpolated_gyro = np.arange(
-                            0, time_original_gyro[-1], 1 / new_fs)
+                            0, tempo_gyro, 1 / new_fs)
 
                         # Interpolação
                         gyro_x_interpolated = interp1d(
