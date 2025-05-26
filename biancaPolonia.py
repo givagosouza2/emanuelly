@@ -346,3 +346,6 @@ with col1:
                                     ax.set_xlabel("Tempo (s)")
                                     ax.set_ylabel("Amplitude")
                                     st.pyplot(fig)
+
+
+               
