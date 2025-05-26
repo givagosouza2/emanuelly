@@ -38,10 +38,10 @@ with col1:
 
         baseline = np.mean(disp_z[100:500])
         sd_baseline = np.std(disp_z[100:500])
-        for index, value in enumerate(disp_z):
+        for index, value in enumerate(disp_z[100:500]):
             if value > baseline + 2*sd_baseline or value < baseline + 2*sd_baseline:
                 time_original_kinem = time_original_kinem - \
-                    time_original_kinem[index]
+                    time_original_kinem[index+100]
                 break
         # Diferença entre tempos consecutivos
         delta_t = np.diff(time_original_kinem)
