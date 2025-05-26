@@ -31,8 +31,8 @@ with col1:
         disp_y = (df.iloc[:, 1].values)/1000
         disp_z = (df.iloc[:, 2].values)/1000
 
-        original_fs = 120
-        new_fs = 120
+        original_fs = 100
+        new_fs = 100
         cutoff = 2
         time_original_kinem = np.arange(0, len(disp_y)) / original_fs
 
