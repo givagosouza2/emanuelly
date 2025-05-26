@@ -110,15 +110,15 @@ with col1:
                 acc_z = df.iloc[:, 3].values
 
                 interpf = scipy.interpolate.interp1d(tempo, acc_x)
-                time_ = np.arange(start=time[0], stop=tempo[len(tempo)-1], step=10)
+                time_ = np.arange(start=tempo[0], stop=tempo[len(tempo)-1], step=10)
                 x_ = interpf(time_)
                 time_interpolated, acc_x_interpolated = time_/1000, x_
                 interpf = scipy.interpolate.interp1d(tempo, acc_y)
-                time_ = np.arange(start=time[0], stop=tempo[len(tempo)-1], step=10)
+                time_ = np.arange(start=tempo[0], stop=tempo[len(tempo)-1], step=10)
                 y_ = interpf(time_)
                 time_interpolated, acc_y_interpolated = time_/1000, y_
                 interpf = scipy.interpolate.interp1d(tempo, acc_z)
-                time_ = np.arange(start=time[0], stop=tempo[len(tempo)-1], step=10)
+                time_ = np.arange(start=tempo[0], stop=tempo[len(tempo)-1], step=10)
                 z_ = interpf(time_)
                 time_interpolated, acc_z_interpolated = time_/1000, z_
             
@@ -179,23 +179,36 @@ with col1:
                         gyro_y = df.iloc[:, 2].values
                         gyro_z = df.iloc[:, 3].values
 
+                        interpf = scipy.interpolate.interp1d(tempo_gyro, gyro_x)
+                        time_ = np.arange(start=tempo_gyro[0], stop=tempo_gyro[len(tempo_gyro)-1], step=10)
+                        x_ = interpf(time_)
+                        time_interpolated_gyro, gyro_x_interpolated = time_/1000, x_
+                        interpf = scipy.interpolate.interp1d(tempo_gyro, hyro_y)
+                        time_ = np.arange(start=tempo_gyro[0], stop=tempo_gyro[len(tempo_gyro)-1], step=10)
+                        y_ = interpf(time_)
+                        time_interpolated_gyro, gyro_y_interpolated = time_/1000, y_
+                        interpf = scipy.interpolate.interp1d(tempo_gyro, gyro_z)
+                        time_ = np.arange(start=tempo_gyro[0], stop=tempo_gyro[len(tempo_gyro)-1], step=10)
+                        z_ = interpf(time_)
+                        time_interpolated_gyro, gyro_z_interpolated = time_/1000, z_
+                
                         # Supõe que os dados têm uma frequência inicial uniforme
-                        original_fs = 50
-                        time_original_gyro = np.arange(
-                            0, len(tempo_gyro)) / original_fs
+                        #original_fs = 50
+                        #time_original_gyro = np.arange(
+                        #   0, len(tempo_gyro)) / original_fs
 
                         # Novo eixo de tempo para interpolação (100 Hz)
-                        new_fs = 100
-                        time_interpolated_gyro = np.arange(
-                            0, tempo_gyro, 1 / new_fs)
+                        #new_fs = 100
+                        #time_interpolated_gyro = np.arange(
+                        #    0, tempo_gyro, 1 / new_fs)
 
                         # Interpolação
-                        gyro_x_interpolated = interp1d(
-                            time_original_gyro, gyro_x, kind='linear')(time_interpolated_gyro)
-                        gyro_y_interpolated = interp1d(
-                            time_original_gyro, gyro_y, kind='linear')(time_interpolated_gyro)
-                        gyro_z_interpolated = interp1d(
-                            time_original_gyro, gyro_z, kind='linear')(time_interpolated_gyro)
+                        #gyro_x_interpolated = interp1d(
+                        #    time_original_gyro, gyro_x, kind='linear')(time_interpolated_gyro)
+                        #gyro_y_interpolated = interp1d(
+                        #    time_original_gyro, gyro_y, kind='linear')(time_interpolated_gyro)
+                        #gyro_z_interpolated = interp1d(
+                        #    time_original_gyro, gyro_z, kind='linear')(time_interpolated_gyro)
 
                         # Detrend
                         gyro_x_detrended = detrend(gyro_x_interpolated)
