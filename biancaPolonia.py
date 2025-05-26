@@ -245,7 +245,7 @@ with col1:
 
                             fig, ax = plt.subplots(figsize=(10, 4))
                             ax.plot(time_original_kinem, disp_z, 'k-')
-                            ax.plot([0, 0], [0, 2], 'k-')
+                            #ax.plot([0, 0], [0, 2], 'k-')
                             # Verificação básica para evitar erros
                             num_ciclos = min(len(onsets), len(offsets))
 
