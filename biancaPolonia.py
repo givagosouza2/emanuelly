@@ -42,10 +42,10 @@ with col1:
         sd_baseline = np.std(dy_dx)
         if autotest:
             for index, value in enumerate(dy_dx):
-            if value > baseline + 2*sd_baseline or value < baseline - 2*sd_baseline:
-                time_original_kinem = time_original_kinem - \
-                    time_original_kinem[index]
-                break
+                if value > baseline + 2*sd_baseline or value < baseline - 2*sd_baseline:
+                    time_original_kinem = time_original_kinem - \
+                        time_original_kinem[index]
+                    break
         else:
             triggerkinem = st.number_input(1,1)
             time_original_kinem = time_original_kinem - \
