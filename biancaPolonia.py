@@ -20,8 +20,8 @@ def low_pass_filter(data, cutoff, fs, order=4):
 # Título do app
 st.set_page_config(layout="wide")
 st.title("Análise de Dados: Interpolação, Detrend e Filtro Passa-Baixa")
+autotest = st.checkbox("Análise automatizada")
 col1, col2, col3 = st.columns(3)
-
 with col1:
     # Carregar o arquivo de texto
     uploaded_file_kinem = st.file_uploader(
@@ -40,11 +40,16 @@ with col1:
         dy_dx = np.diff(disp_z) / np.diff(time_original_kinem)
         baseline = np.mean(dy_dx)
         sd_baseline = np.std(dy_dx)
-        for index, value in enumerate(dy_dx):
+        if autotest:
+            for index, value in enumerate(dy_dx):
             if value > baseline + 2*sd_baseline or value < baseline - 2*sd_baseline:
                 time_original_kinem = time_original_kinem - \
                     time_original_kinem[index]
                 break
+        else:
+            triggerkinem = st.number_input(1,1)
+            time_original_kinem = time_original_kinem - \
+                    time_original_kinem[triggerkinem]
         # Diferença entre tempos consecutivos
         delta_t = np.diff(time_original_kinem)
         # Diferença entre deslocamentos consecutivos
