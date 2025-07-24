@@ -87,6 +87,23 @@ with col1:
                                 if disp_y[i] > disp_y[i+1]:
                                     offsets.append(i)
                                     break
+
+                        standing_time = []
+                        for values in onsets:
+                            for idx, i in enumerate(disp_z[values:values+200]):
+                                if i == max(disp_z[values:values+200]):
+                                    standing_time.append(
+                                        time_original_kinem[values+idx])
+                                    break
+
+                        sitting_time = []
+                        for values in offsets:
+                            for idx, i in enumerate(disp_z[values-400:values]):
+                                if i == max(disp_z[values-400:values]):
+                                    sitting_time.append(
+                                        time_original_kinem[values-400+idx])
+                                    break
+
                         # aceleração
                         new_fs = 100
                         interpf = scipy.interpolate.interp1d(tempo, acc_x)
@@ -174,9 +191,8 @@ with col1:
                             ax.plot(
                                 time_original_kinem[0:2000], disp_z[0:2000], 'k-')
                             ax.plot([0, 0], [0, 2], 'r-')
-                            # Verificação básica para evitar erros
 
-                            # num_ciclos = min(len(onsets), len(offsets))
+                            num_ciclos = min(len(onsets), len(offsets))
 
                             # for i in range(num_ciclos):
                             #    t_onset = time_original_kinem[onsets[i]]
@@ -205,8 +221,8 @@ with col1:
 
                             ax.set_xlabel("Tempo (s)")
                             ax.set_ylabel("Amplitude")
-
                             st.pyplot(fig)
+
                             with col2:
                                 fig, ax = plt.subplots(figsize=(10, 4))
                                 ax.plot(
@@ -317,6 +333,7 @@ with col1:
                                         ax.plot(
                                             time_original_kinem, disp_z, 'k-')
                                         ax.plot([0, 0], [0, 2], 'r-')
+
                                         # Verificação básica para evitar erros
 
                                         num_ciclos = min(
@@ -335,6 +352,11 @@ with col1:
                                             # Faixa entre onset e offset
                                             ax.axvspan(t_onset, t_offset, color='gray', alpha=0.3,
                                                        label='Fase de queda' if i == 0 else "")
+                                            #    # Linha tracejada: início
+                                            ax.axvline(standing_time[i], linestyle='--', color='red',
+                                                       label='Início da queda' if i == 0 else "")
+                                            ax.axvline(sitting_time[i], linestyle='--', color='black',
+                                                       label='Início da queda' if i == 0 else "")
 
                                             # Se houver um próximo ciclo, pinta o intervalo entre o offset atual e o próximo onset
                                             if i + 1 < num_ciclos:
@@ -375,6 +397,11 @@ with col1:
                                                 ax.axvspan(t_onset, t_offset, color='gray', alpha=0.3,
                                                            label='Fase de queda' if i == 0 else "")
 
+                                                ax.axvline(standing_time[i], linestyle='--', color='red',
+                                                           label='Início da queda' if i == 0 else "")
+                                                ax.axvline(sitting_time[i], linestyle='--', color='black',
+                                                           label='Início da queda' if i == 0 else "")
+
                                                 # Se houver um próximo ciclo, pinta o intervalo entre o offset atual e o próximo onset
                                                 if i + 1 < num_ciclos:
                                                     t_next_onset = time_original_kinem[onsets[i+1]]
@@ -411,6 +438,10 @@ with col1:
                                             # Faixa entre onset e offset
                                                 ax.axvspan(t_onset, t_offset, color='gray', alpha=0.3,
                                                            label='Fase de queda' if i == 0 else "")
+                                                ax.axvline(standing_time[i], linestyle='--', color='red',
+                                                           label='Início da queda' if i == 0 else "")
+                                                ax.axvline(sitting_time[i], linestyle='--', color='black',
+                                                           label='Início da queda' if i == 0 else "")
 
                                             # Se houver um próximo ciclo, pinta o intervalo entre o offset atual e o próximo onset
                                                 if i + 1 < num_ciclos:
@@ -425,3 +456,48 @@ with col1:
                                             ax.set_xlabel("Tempo (s)")
                                             ax.set_ylabel("Amplitude")
                                             st.pyplot(fig)
+                                            with col1:
+                                                st.text(
+                                                    f'Número de ciclos = {num_ciclos}')
+                                                for idx in np.arange(4):
+                                                    st.text(
+                                                        f'Inicio do ciclo {idx+1} = {time_original_kinem[onsets[idx]]}')
+                                                for idx in np.arange(4):
+                                                    st.text(
+                                                        f'Final do ciclo {idx+1} = {time_original_kinem[offsets[idx]]}')
+                                                for idx in np.arange(4):
+                                                    st.text(
+                                                        f'Tempo de retorno do ciclo {idx+1} = {time_original_kinem[peaks[idx]]}')
+                                                for idx in np.arange(4):
+                                                    st.text(
+                                                        f'Duração do ciclo {idx+1} = {time_original_kinem[offsets[idx]]-time_original_kinem[onsets[idx]]}')
+                                                for idx in np.arange(4):
+                                                    st.text(
+                                                        f'Duração da ida do ciclo {idx+1} = {time_original_kinem[peaks[idx]] - time_original_kinem[onsets[idx]]}')
+                                                for idx in np.arange(4):
+                                                    st.text(
+                                                        f'Duração da volta do ciclo {idx+1} = {time_original_kinem[offsets[idx]] - time_original_kinem[peaks[idx]]}')
+                                            with col2:
+                                                for idx in np.arange(4):
+                                                    st.text(
+                                                        f'Momento final da subida do ciclo {idx+1} = {standing_time[idx]}')
+
+                                                for idx in np.arange(4):
+                                                    st.text(
+                                                        f'Momento inicial da descida do ciclo {idx+1} = {sitting_time[idx]}')
+
+                                                for idx in np.arange(4):
+                                                    st.text(
+                                                        f'Duração da subida do ciclo {idx+1} = {standing_time[idx]-time_original_kinem[onsets[idx]]}')
+
+                                                for idx in np.arange(4):
+                                                    st.text(
+                                                        f'Duração da descida do ciclo {idx+1} = {time_original_kinem[offsets[idx]] - sitting_time[idx]}')
+
+                                                for idx in np.arange(4):
+                                                    st.text(
+                                                        f'Duração da ida {idx+1} = {time_original_kinem[peaks[idx]] - standing_time[idx]}')
+
+                                                for idx in np.arange(4):
+                                                    st.text(
+                                                        f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
