@@ -765,7 +765,9 @@ with col1:
                                                 time_interpolated_gyro, v_gyro, 'k-')
                                             
                                             ax.plot(
-                                                [momentos_picos[0],momentos_picos[0]], [0,30], 'g--')
+                                                [momentos_picos[0],momentos_picos[0]], [0,30], 'c--')
+                                            ax.plot(
+                                                [momentos_picos[1],momentos_picos[1]], [0,30], 'c--')
                                             
                                             ax.plot(
                                                 [time_original_kinem[onsets[0]],time_original_kinem[onsets[0]]], [0,30], 'b-')
@@ -849,6 +851,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
