@@ -506,7 +506,7 @@ with col1:
                                                     break
                                                     
                                             for index,valor in enumerate(ml_gyro[start_gyro:-1]):
-                                                if valor > 0.3:
+                                                if valor > 0.15:
                                                     onset_gyro = index
                                                     break
 
@@ -517,7 +517,7 @@ with col1:
                                                     
                                             for index in range(len(ml_gyro[0:start_gyro2]) - 1, start_gyro + 100, -1):
                                                 valor = ml_gyro[index]
-                                                if valor > 0.3:
+                                                if valor > 0.15:
                                                     offset_gyro = start_gyro2-index
                                                     break
                                                 
@@ -608,6 +608,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
