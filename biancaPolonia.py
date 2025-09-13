@@ -601,51 +601,51 @@ with col1:
 
                                             for index,valor in enumerate(time_interpolated_gyro):
                                                 if valor > time_original_kinem[onsets[0]]:
-                                                    start_gyro = index
+                                                    start_gyro = index-1
                                                     break
                                                     
                                             for index,valor in enumerate(ml_gyro[start_gyro:-1]):
                                                 if valor > 0.15:
-                                                    onset_gyro = index
+                                                    onset_gyro = index-1
                                                     break
 
                                             for index,valor in enumerate(time_interpolated_gyro):
                                                 if valor > time_original_kinem[onsets[1]]:
-                                                    start_gyro2 = index
+                                                    start_gyro2 = index-1
                                                     break
                                                     
                                             for index in range(len(ml_gyro[0:start_gyro2]) - 1, start_gyro + 100, -1):
                                                 valor = ml_gyro[index]
                                                 if valor > 0.15:
-                                                    offset_gyro = start_gyro2-index
+                                                    offset_gyro = start_gyro2-index-1
                                                     break
                                                     
                                             for index,valor in enumerate(time_interpolated_gyro):
                                                 if valor > time_original_kinem[onsets[2]]:
-                                                    start_gyro3 = index
+                                                    start_gyro3 = index-1
                                                     break
 
                                             for index in range(len(ml_gyro[0:start_gyro3]) - 1, start_gyro2 + 100, -1):
                                                 valor = ml_gyro[index]
                                                 if valor > 0.15:
-                                                    offset_gyro2 = start_gyro3-index
+                                                    offset_gyro2 = start_gyro3-index-1
                                                     break
 
                                             for index,valor in enumerate(time_interpolated_gyro):
                                                 if valor > time_original_kinem[onsets[3]]:
-                                                    start_gyro4 = index
+                                                    start_gyro4 = index-1
                                                     break
 
                                             for index in range(len(ml_gyro[0:start_gyro4]) - 1, start_gyro3 + 100, -1):
                                                 valor = ml_gyro[index]
                                                 if valor > 0.15:
-                                                    offset_gyro3 = start_gyro4-index
+                                                    offset_gyro3 = start_gyro4-index-1
                                                     break
 
                                             for index in range(len(ml_gyro) - 1, start_gyro4 + 100, -1):
                                                 valor = ml_gyro[index]
                                                 if valor > 0.15:
-                                                    offset_gyro4 = start_gyro4-index
+                                                    offset_gyro4 = start_gyro4-index-1
                                                     break
                                                 
                                             fig, ax = plt.subplots(
@@ -851,6 +851,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
