@@ -714,36 +714,36 @@ with col1:
                                                 time_interpolated_gyro, ap_gyro, 'k-')
                                             
                                             ax.plot(
-                                                [time_original_kinem[onsets[0]],time_original_kinem[onsets[0]]], [0,30], 'b-')
+                                                [time_original_kinem[onsets[0]],time_original_kinem[onsets[0]]], [0,30], 'b-',linewidth=largura)
                                             ax.plot(
-                                                [time_original_kinem[offsets[0]],time_original_kinem[offsets[0]]], [0,30], 'b-')
+                                                [time_original_kinem[offsets[0]],time_original_kinem[offsets[0]]], [0,30], 'b-',linewidth=largura)
                                             ax.plot(
-                                                [time_original_kinem[onsets[1]],time_original_kinem[onsets[1]]], [0,30], 'b-')
+                                                [time_original_kinem[onsets[1]],time_original_kinem[onsets[1]]], [0,30], 'b-',linewidth=largura)
                                             ax.plot(
-                                                [time_original_kinem[offsets[1]],time_original_kinem[offsets[1]]], [0,30], 'b-')
+                                                [time_original_kinem[offsets[1]],time_original_kinem[offsets[1]]], [0,30], 'b-',linewidth=largura)
                                             ax.plot(
-                                                [time_original_kinem[onsets[2]],time_original_kinem[onsets[2]]], [0,30], 'b-')
+                                                [time_original_kinem[onsets[2]],time_original_kinem[onsets[2]]], [0,30], 'b-',linewidth=largura)
                                             ax.plot(
-                                                [time_original_kinem[offsets[2]],time_original_kinem[offsets[2]]], [0,30], 'b-')
+                                                [time_original_kinem[offsets[2]],time_original_kinem[offsets[2]]], [0,30], 'b-',linewidth=largura)
                                             ax.plot(
-                                                [time_original_kinem[onsets[3]],time_original_kinem[onsets[3]]], [0,30], 'b-')
+                                                [time_original_kinem[onsets[3]],time_original_kinem[onsets[3]]], [0,30], 'b-',linewidth=largura)
                                             ax.plot(
-                                                [time_original_kinem[offsets[3]],time_original_kinem[offsets[3]]], [0,30], 'b-')
+                                                [time_original_kinem[offsets[3]],time_original_kinem[offsets[3]]], [0,30], 'b-',linewidth=largura)
 
-                                            ax.plot([standing_time[0],standing_time[0]], [0,30], 'r-')
-                                            ax.plot([standing_time[1],standing_time[1]], [0,30], 'r-')
-                                            ax.plot([standing_time[2],standing_time[2]], [0,30], 'r-')
-                                            ax.plot([standing_time[3],standing_time[3]], [0,30], 'r-')
+                                            ax.plot([standing_time[0],standing_time[0]], [0,30], 'r-',linewidth=largura)
+                                            ax.plot([standing_time[1],standing_time[1]], [0,30], 'r-',linewidth=largura)
+                                            ax.plot([standing_time[2],standing_time[2]], [0,30], 'r-',linewidth=largura)
+                                            ax.plot([standing_time[3],standing_time[3]], [0,30], 'r-',linewidth=largura)
 
-                                            ax.plot([sitting_time[0],sitting_time[0]], [0,30], 'r-')
-                                            ax.plot([sitting_time[1],sitting_time[1]], [0,30], 'r-')
-                                            ax.plot([sitting_time[2],sitting_time[2]], [0,30], 'r-')
-                                            ax.plot([sitting_time[3],sitting_time[3]], [0,30], 'r-')
+                                            ax.plot([sitting_time[0],sitting_time[0]], [0,30], 'r-',linewidth=largura)
+                                            ax.plot([sitting_time[1],sitting_time[1]], [0,30], 'r-',linewidth=largura)
+                                            ax.plot([sitting_time[2],sitting_time[2]], [0,30], 'r-',linewidth=largura)
+                                            ax.plot([sitting_time[3],sitting_time[3]], [0,30], 'r-',linewidth=largura)
 
-                                            ax.plot([time_original_kinem[peaks[0]],time_original_kinem[peaks[0]]], [0,30], 'k-')
-                                            ax.plot([time_original_kinem[peaks[1]],time_original_kinem[peaks[1]]], [0,30], 'k-')
-                                            ax.plot([time_original_kinem[peaks[2]],time_original_kinem[peaks[2]]], [0,30], 'k-')
-                                            ax.plot([time_original_kinem[peaks[3]],time_original_kinem[peaks[3]]], [0,30], 'k-')
+                                            ax.plot([time_original_kinem[peaks[0]],time_original_kinem[peaks[0]]], [0,30], 'k-',linewidth=largura)
+                                            ax.plot([time_original_kinem[peaks[1]],time_original_kinem[peaks[1]]], [0,30], 'k-',linewidth=largura)
+                                            ax.plot([time_original_kinem[peaks[2]],time_original_kinem[peaks[2]]], [0,30], 'k-',linewidth=largura)
+                                            ax.plot([time_original_kinem[peaks[3]],time_original_kinem[peaks[3]]], [0,30], 'k-',linewidth=largura)
 
                                             ax.plot([0, 0], [0, 30], 'r--')
                                             ax.set_xlabel("Tempo (s)")
@@ -771,36 +771,36 @@ with col1:
                                                 [momentos_picos[1],momentos_picos[1]], [0,30], 'c--')
                                             
                                             ax.plot(
-                                                [time_original_kinem[onsets[0]],time_original_kinem[onsets[0]]], [0,30], 'b-')
+                                                [time_original_kinem[onsets[0]],time_original_kinem[onsets[0]]], [0,30], 'b-',linewidth=largura)
                                             ax.plot(
-                                                [time_original_kinem[offsets[0]],time_original_kinem[offsets[0]]], [0,30], 'b-')
+                                                [time_original_kinem[offsets[0]],time_original_kinem[offsets[0]]], [0,30], 'b-',linewidth=largura)
                                             ax.plot(
-                                                [time_original_kinem[onsets[1]],time_original_kinem[onsets[1]]], [0,30], 'b-')
+                                                [time_original_kinem[onsets[1]],time_original_kinem[onsets[1]]], [0,30], 'b-',linewidth=largura)
                                             ax.plot(
-                                                [time_original_kinem[offsets[1]],time_original_kinem[offsets[1]]], [0,30], 'b-')
+                                                [time_original_kinem[offsets[1]],time_original_kinem[offsets[1]]], [0,30], 'b-',linewidth=largura)
                                             ax.plot(
-                                                [time_original_kinem[onsets[2]],time_original_kinem[onsets[2]]], [0,30], 'b-')
+                                                [time_original_kinem[onsets[2]],time_original_kinem[onsets[2]]], [0,30], 'b-',linewidth=largura)
                                             ax.plot(
-                                                [time_original_kinem[offsets[2]],time_original_kinem[offsets[2]]], [0,30], 'b-')
+                                                [time_original_kinem[offsets[2]],time_original_kinem[offsets[2]]], [0,30], 'b-',linewidth=largura)
                                             ax.plot(
-                                                [time_original_kinem[onsets[3]],time_original_kinem[onsets[3]]], [0,30], 'b-')
+                                                [time_original_kinem[onsets[3]],time_original_kinem[onsets[3]]], [0,30], 'b-',linewidth=largura)
                                             ax.plot(
-                                                [time_original_kinem[offsets[3]],time_original_kinem[offsets[3]]], [0,30], 'b-')
+                                                [time_original_kinem[offsets[3]],time_original_kinem[offsets[3]]], [0,30], 'b-',linewidth=largura)
 
-                                            ax.plot([standing_time[0],standing_time[0]], [0,30], 'r-')
-                                            ax.plot([standing_time[1],standing_time[1]], [0,30], 'r-')
-                                            ax.plot([standing_time[2],standing_time[2]], [0,30], 'r-')
-                                            ax.plot([standing_time[3],standing_time[3]], [0,30], 'r-')
+                                            ax.plot([standing_time[0],standing_time[0]], [0,30], 'r-',linewidth=largura)
+                                            ax.plot([standing_time[1],standing_time[1]], [0,30], 'r-',linewidth=largura)
+                                            ax.plot([standing_time[2],standing_time[2]], [0,30], 'r-',linewidth=largura)
+                                            ax.plot([standing_time[3],standing_time[3]], [0,30], 'r-',linewidth=largura)
 
-                                            ax.plot([sitting_time[0],sitting_time[0]], [0,30], 'r-')
-                                            ax.plot([sitting_time[1],sitting_time[1]], [0,30], 'r-')
-                                            ax.plot([sitting_time[2],sitting_time[2]], [0,30], 'r-')
-                                            ax.plot([sitting_time[3],sitting_time[3]], [0,30], 'r-')
+                                            ax.plot([sitting_time[0],sitting_time[0]], [0,30], 'r-',linewidth=largura)
+                                            ax.plot([sitting_time[1],sitting_time[1]], [0,30], 'r-',linewidth=largura)
+                                            ax.plot([sitting_time[2],sitting_time[2]], [0,30], 'r-',linewidth=largura)
+                                            ax.plot([sitting_time[3],sitting_time[3]], [0,30], 'r-',linewidth=largura)
 
-                                            ax.plot([time_original_kinem[peaks[0]],time_original_kinem[peaks[0]]], [0,30], 'k-')
-                                            ax.plot([time_original_kinem[peaks[1]],time_original_kinem[peaks[1]]], [0,30], 'k-')
-                                            ax.plot([time_original_kinem[peaks[2]],time_original_kinem[peaks[2]]], [0,30], 'k-')
-                                            ax.plot([time_original_kinem[peaks[3]],time_original_kinem[peaks[3]]], [0,30], 'k-')
+                                            ax.plot([time_original_kinem[peaks[0]],time_original_kinem[peaks[0]]], [0,30], 'k-',linewidth=largura)
+                                            ax.plot([time_original_kinem[peaks[1]],time_original_kinem[peaks[1]]], [0,30], 'k-',linewidth=largura)
+                                            ax.plot([time_original_kinem[peaks[2]],time_original_kinem[peaks[2]]], [0,30], 'k-',linewidth=largura)
+                                            ax.plot([time_original_kinem[peaks[3]],time_original_kinem[peaks[3]]], [0,30], 'k-',linewidth=largura)
                                             ax.plot([0, 0], [0, 5], 'r--')
                                             ax.set_xlabel("Tempo (s)")
                                             ax.set_ylabel("Velocidade angular V")
@@ -852,6 +852,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
