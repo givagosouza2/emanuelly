@@ -518,7 +518,7 @@ with col1:
                                             for index in range(len(ml_gyro[0:start_gyro2]) - 1, start_gyro + 100, -1):
                                                 valor = ml_gyro[index]
                                                 if valor > 0.15:
-                                                    offset_gyro = index+start_gyro
+                                                    offset_gyro = start_gyro2-index
                                                     break
                                                 
                                             fig, ax = plt.subplots(
@@ -606,6 +606,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
