@@ -520,6 +520,17 @@ with col1:
                                                 if valor > 0.15:
                                                     offset_gyro = start_gyro2-index
                                                     break
+                                                    
+                                            for index,valor in enumerate(time_interpolated_gyro):
+                                                if valor > time_original_kinem[onsets[2]]:
+                                                    start_gyro3 = index
+                                                    break
+
+                                            for index in range(len(ml_gyro[0:start_gyro3]) - 1, start_gyro2 + 100, -1):
+                                                valor = ml_gyro[index]
+                                                if valor > 0.15:
+                                                    offset_gyro2 = start_gyro3-index
+                                                    break
                                                 
                                             fig, ax = plt.subplots(
                                             figsize=(10, 4))
@@ -529,6 +540,10 @@ with col1:
                                                 [time_interpolated_gyro[onset_gyro+start_gyro],time_interpolated_gyro[onset_gyro+start_gyro]], [0,30], 'y--')
                                             ax.plot(
                                                 [time_interpolated_gyro[start_gyro2-offset_gyro],time_interpolated_gyro[start_gyro2-offset_gyro]], [0,30], 'y--')
+                                            ax.plot(
+                                                [time_interpolated_gyro[onset_gyro+start_gyro2],time_interpolated_gyro[onset_gyro+start_gyro2]], [0,30], 'y--')
+                                            ax.plot(
+                                                [time_interpolated_gyro[start_gyro3-offset_gyro2],time_interpolated_gyro[start_gyro3-offset_gyro2]], [0,30], 'y--')
                                             
                                             ax.plot(
                                                 [time_original_kinem[onsets[0]],time_original_kinem[onsets[0]]], [0,30], 'b-')
@@ -536,6 +551,8 @@ with col1:
                                                 [time_original_kinem[offsets[0]],time_original_kinem[offsets[0]]], [0,30], 'b-')
                                             ax.plot(
                                                 [time_original_kinem[onsets[1]],time_original_kinem[onsets[1]]], [0,30], 'b-')
+                                            ax.plot(
+                                                [time_original_kinem[offsets[1]],time_original_kinem[offsets[1]]], [0,30], 'b-')
                                             
                                             ax.plot([0, 0], [0, 30], 'r--')
                                             ax.set_xlabel("Tempo (s)")
@@ -608,6 +625,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
