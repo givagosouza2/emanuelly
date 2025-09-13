@@ -507,7 +507,7 @@ with col1:
                                             ax.plot([0, 0], [0, 30], 'r--')
                                             ax.set_xlabel("Tempo (s)")
                                             ax.set_ylabel("Velocidade angular ML")
-                                            ax.set_ylim([0,5])
+                                            ax.set_ylim([0,3])
                                             st.pyplot(fig)
 
                                             fig, ax = plt.subplots(
@@ -517,7 +517,7 @@ with col1:
                                             ax.plot([0, 0], [0, 30], 'r--')
                                             ax.set_xlabel("Tempo (s)")
                                             ax.set_ylabel("Velocidade angular AP")
-                                            ax.set_ylim([0,5])
+                                            ax.set_ylim([0,3])
                                             st.pyplot(fig)
 
                                             fig, ax = plt.subplots(
@@ -527,7 +527,7 @@ with col1:
                                             ax.plot([0, 0], [0, 5], 'r--')
                                             ax.set_xlabel("Tempo (s)")
                                             ax.set_ylabel("Velocidade angular V")
-                                            ax.set_ylim([0,10])
+                                            ax.set_ylim([0,5])
                                             st.pyplot(fig)
                                             
                                             with col1:
@@ -575,6 +575,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
