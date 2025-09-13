@@ -500,10 +500,22 @@ with col1:
                                             ax.set_ylabel("Amplitude")
                                             st.pyplot(fig)
 
+                                            for index,valor in enumerate(time_interpolated_gyro):
+                                                if valor > time_original_kinem[onsets[0]]-5:
+                                                    start_gyro = index
+                                                    break
+                                                    
+                                            for index,valor in enumerate(ml_gyro):
+                                                if valor > 0.5
+                                                    onset_gyro = index
+                                                    break
+                                                
                                             fig, ax = plt.subplots(
                                             figsize=(10, 4))
                                             ax.plot(
-                                                time_interpolated, ml_gyro, 'k-')
+                                                time_interpolated_gyro, ml_gyro, 'k-')
+                                            ax.plot(
+                                                [time_interpolated_gyro[onset_gyro],time_interpolated_gyro[onset_gyro]], [0,30], 'b-')
                                             ax.plot([0, 0], [0, 30], 'r--')
                                             ax.set_xlabel("Tempo (s)")
                                             ax.set_ylabel("Velocidade angular ML")
@@ -513,7 +525,7 @@ with col1:
                                             fig, ax = plt.subplots(
                                                 figsize=(10, 4))
                                             ax.plot(
-                                                time_interpolated, ap_gyro, 'k-')
+                                                time_interpolated_gyro, ap_gyro, 'k-')
                                             ax.plot([0, 0], [0, 30], 'r--')
                                             ax.set_xlabel("Tempo (s)")
                                             ax.set_ylabel("Velocidade angular AP")
@@ -523,7 +535,7 @@ with col1:
                                             fig, ax = plt.subplots(
                                             figsize=(10, 4))
                                             ax.plot(
-                                                time_interpolated, v_gyro, 'k-')
+                                                time_interpolated_gyro, v_gyro, 'k-')
                                             ax.plot([0, 0], [0, 5], 'r--')
                                             ax.set_xlabel("Tempo (s)")
                                             ax.set_ylabel("Velocidade angular V")
@@ -575,6 +587,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
