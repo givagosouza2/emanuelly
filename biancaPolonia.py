@@ -127,7 +127,7 @@ with col1:
                         acc_z_detrended = detrend(acc_z_interpolated)
 
                         # Filtro passa-baixa (10 Hz)
-                        cutoff = 10  # Frequência de corte
+                        cutoff = 4  # Frequência de corte
                         acc_x_filtered = low_pass_filter(
                             acc_x_detrended, cutoff, new_fs)
                         acc_y_filtered = low_pass_filter(
@@ -169,7 +169,7 @@ with col1:
                         gyro_z_detrended = detrend(gyro_z_interpolated)
 
                         # Filtro passa-baixa (10 Hz)
-                        cutoff = 2  # Frequência de corte
+                        cutoff = 1.25  # Frequência de corte
                         gyro_x_filtered = low_pass_filter(
                             gyro_x_detrended, cutoff, new_fs)
                         gyro_y_filtered = low_pass_filter(
@@ -575,6 +575,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
