@@ -587,8 +587,10 @@ with col1:
                                             ax.plot(
                                                 [time_original_kinem[offsets[3]],time_original_kinem[offsets[3]]], [0,30], 'b-')
 
-                                            ax.plot(
-                                                [standing_time[0]],standing_time[0]], [0,30], 'r-')
+                                            ax.plot([standing_time[0],standing_time[0]], [0,30], 'r-')
+                                            ax.plot([standing_time[1],standing_time[1]], [0,30], 'r-')
+                                            ax.plot([standing_time[2],standing_time[2]], [0,30], 'r-')
+                                            ax.plot([standing_time[3],standing_time[3]], [0,30], 'r-')
                                             
                                             ax.plot([0, 0], [0, 30], 'r--')
                                             ax.set_xlabel("Tempo (s)")
@@ -661,6 +663,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
