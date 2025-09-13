@@ -515,7 +515,8 @@ with col1:
                                             ax.plot(
                                                 time_interpolated_gyro, ml_gyro, 'k-')
                                             ax.plot(
-                                                [time_interpolated_gyro[onset_gyro],time_interpolated_gyro[onset_gyro]], [0,30], 'b-')
+                                                [time_original_kinem[onsets[0]],[time_original_kinem[onsets[0]], [0,30], 'b-')
+                                            
                                             ax.plot([0, 0], [0, 30], 'r--')
                                             ax.set_xlabel("Tempo (s)")
                                             ax.set_ylabel("Velocidade angular ML")
@@ -587,6 +588,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
