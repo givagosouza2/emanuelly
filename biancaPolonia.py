@@ -760,7 +760,7 @@ with col1:
                                             maiores_picos = v_gyro[indices][picos_ordenados]
                                             momentos_picos = time_interpolated_gyro[indices][picos_ordenados]
 
-                                            y2 = v_gyro[start_gyro+start_gyro2:start_gyro3-offset_gyro2]
+                                            y2 = v_gyro[start_gyro2:start_gyro3-offset_gyro2]
                                             indices, propriedades = find_peaks(y2)
                                             indices = indices + start_gyro2 + start_gyro
                                             # Ordenar picos por altura
@@ -865,6 +865,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
