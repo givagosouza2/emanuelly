@@ -136,7 +136,7 @@ with col1:
                             acc_z_detrended, cutoff, new_fs)
                         acc_norm_filtered = np.sqrt(
                             acc_x_filtered**2+acc_y_filtered**2+acc_z_filtered**2)
-
+                        
                         with col2:
                             valor_acc = st.slider(
                                 "Ajuste o trigger do acc", min_value=0, max_value=len(time_interpolated), value=0)
@@ -178,7 +178,20 @@ with col1:
                             gyro_z_detrended, cutoff, new_fs)
                         gyro_norm_filtered = np.sqrt(
                             gyro_x_filtered**2+gyro_y_filtered**2+gyro_z_filtered**2)
-
+                        if np.mean(acc_x) > np.mean(acc_y):
+                            ml_acc = acc_y_filtered
+                            v_acc = acc_x_filtered
+                            ap_acc = acc_z_filtered
+                            ml_gyro = gyro_y_filtered
+                            v_gyro = gyro_x_filtered
+                            ap_gyro = gyro_z_filtered
+                        else:
+                            v_acc = acc_y_filtered
+                            ml_acc = acc_x_filtered
+                            ap_acc = acc_z_filtered
+                            ml_gyro = gyro_x_filtered
+                            v_gyro = gyro_y_filtered
+                            ap_gyro = gyro_z_filtered
                         with col3:
                             valor_gyro = st.slider(
                                 "Ajuste o trigger do gyro", min_value=0, max_value=len(time_interpolated_gyro), value=0)
@@ -418,6 +431,33 @@ with col1:
 
                                             fig, ax = plt.subplots(
                                                 figsize=(10, 4))
+                                            ax.plot(
+                                                time_interpolated, ml_acc, 'k-')
+                                            ax.plot([0, 0], [0, 30], 'r--')
+                                            ax.set_xlabel("Tempo (s)")
+                                            ax.set_ylabel("Aceleração ML")
+                                            st.pyplot(fig)
+
+                                            fig, ax = plt.subplots(
+                                                figsize=(10, 4))
+                                            ax.plot(
+                                                time_interpolated, ap_acc, 'k-')
+                                            ax.plot([0, 0], [0, 30], 'r--')
+                                            ax.set_xlabel("Tempo (s)")
+                                            ax.set_ylabel("Aceleração AP")
+                                            st.pyplot(fig)
+
+                                            fig, ax = plt.subplots(
+                                            figsize=(10, 4))
+                                            ax.plot(
+                                                time_interpolated, v_acc, 'k-')
+                                            ax.plot([0, 0], [0, 30], 'r--')
+                                            ax.set_xlabel("Tempo (s)")
+                                            ax.set_ylabel("Aceleração V")
+                                            st.pyplot(fig)
+
+                                            fig, ax = plt.subplots(
+                                                figsize=(10, 4))
                                             ax.plot(time_interpolated_gyro,
                                                     gyro_norm_filtered, 'k-')
                                             ax.plot([0, 0], [0, 2], 'r-')
@@ -501,3 +541,4 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
