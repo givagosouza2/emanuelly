@@ -179,19 +179,19 @@ with col1:
                         gyro_norm_filtered = np.sqrt(
                             gyro_x_filtered**2+gyro_y_filtered**2+gyro_z_filtered**2)
                         if np.mean(acc_x) > np.mean(acc_y):
-                            ml_acc = acc_y_filtered
-                            v_acc = acc_x_filtered
-                            ap_acc = acc_z_filtered
-                            ml_gyro = gyro_y_filtered
-                            v_gyro = gyro_x_filtered
-                            ap_gyro = gyro_z_filtered
+                            ml_acc = np.sqrt(acc_y_filtered**2)
+                            v_acc = np.sqrt(acc_x_filtered**2)
+                            ap_acc = np.sqrt(acc_z_filtered**2)
+                            ml_gyro = np.sqrt(gyro_y_filtered**2)
+                            v_gyro = np.sqrt(gyro_x_filtered**2)
+                            ap_gyro = np.sqrt(gyro_z_filtered**2)
                         else:
-                            v_acc = acc_y_filtered
-                            ml_acc = acc_x_filtered
-                            ap_acc = acc_z_filtered
-                            ml_gyro = gyro_x_filtered
-                            v_gyro = gyro_y_filtered
-                            ap_gyro = gyro_z_filtered
+                            v_acc = np.sqrt(acc_y_filtered**2)
+                            ml_acc = np.sqrt(acc_x_filtered**2)
+                            ap_acc = np.sqrt(acc_z_filtered**2)
+                            ml_gyro = np.sqrt(gyro_x_filtered**2)
+                            v_gyro = np.sqrt(gyro_y_filtered**2)
+                            ap_gyro = np.sqrt(gyro_z_filtered**2)
                         with col3:
                             valor_gyro = st.slider(
                                 "Ajuste o trigger do gyro", min_value=0, max_value=len(time_interpolated_gyro), value=0)
@@ -541,4 +541,5 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
