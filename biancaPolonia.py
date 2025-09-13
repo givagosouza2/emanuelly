@@ -518,7 +518,7 @@ with col1:
                                             for index in range(len(ml_gyro[0:start_gyro2]) - 1, start_gyro + 100, -1):
                                                 valor = ml_gyro[index]
                                                 if valor > 0.15:
-                                                    offset_gyro = index
+                                                    offset_gyro = index+start_gyro
                                                     break
                                                 
                                             fig, ax = plt.subplots(
@@ -526,7 +526,7 @@ with col1:
                                             ax.plot(
                                                 time_interpolated_gyro, ml_gyro, 'k-')
                                             ax.plot(
-                                                [time_interpolated_gyro[onset_gyro+start_gyro],time_interpolated_gyro[offset_gyro+start_gyro]], [0,30], 'y--')
+                                                [time_interpolated_gyro[onset_gyro+start_gyro],time_interpolated_gyro[onset_gyro+start_gyro]], [0,30], 'y--')
                                             ax.plot(
                                                 [time_interpolated_gyro[offset_gyro+start_gyro],time_interpolated_gyro[offset_gyro+start_gyro]], [0,30], 'y--')
                                             
@@ -606,6 +606,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
