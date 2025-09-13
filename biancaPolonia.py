@@ -501,7 +501,7 @@ with col1:
                                             st.pyplot(fig)
 
                                             for index,valor in enumerate(time_interpolated_gyro):
-                                                if valor > time_original_kinem[onsets[0]]-5:
+                                                if valor > time_original_kinem[onsets[1]]-5:
                                                     start_gyro = index
                                                     break
                                                     
@@ -587,6 +587,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
