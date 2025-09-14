@@ -1162,7 +1162,7 @@ with col1:
                                                 fig, ax = plt.subplots(figsize=(10, 4))
                                                 ax.plot(time_original_kinem, disp_y, 'k-')
 
-                                                x.plot(
+                                                ax.plot(
                                                 [time_interpolated_gyro[onset_gyro+start_gyro3],time_interpolated_gyro[onset_gyro+start_gyro3]], [0,30], 'y--')
                                                 ax.plot(
                                                 [time_interpolated_gyro[start_gyro4-offset_gyro3],time_interpolated_gyro[start_gyro4-offset_gyro3]], [0,30], 'y--')
@@ -1325,6 +1325,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
