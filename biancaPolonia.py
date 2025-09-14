@@ -909,7 +909,7 @@ with col1:
                                             with col2:
                                                 fig, ax = plt.subplots(figsize=(10, 4))
                                                 ax.plot(
-                                                time_original_kinem[0:2000], disp_z[0:2000], 'k-')
+                                                time_original_kinem, disp_z, 'k-')
                                                 ax.plot([0, 0], [0, 2], 'r-')
 
                                                 ax.plot(
@@ -970,6 +970,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
