@@ -200,7 +200,7 @@ with col1:
 
                         with col1:
 
-                            fig, ax = plt.subplots(figsize=(10, 4))
+                            fig, ax = plt.subplots(figsize=(10, 4))0
                             ax.plot(
                                 time_original_kinem[0:2000], disp_z[0:2000], 'k-')
                             ax.plot([0, 0], [0, 2], 'r-')
@@ -768,6 +768,24 @@ with col1:
                                             # Extrair valores e momentos
                                             maiores_picos2 = v_gyro[indices][picos_ordenados]
                                             momentos_picos2 = time_interpolated_gyro[indices][picos_ordenados]
+
+                                            y3 = v_gyro[start_gyro3:start_gyro4-offset_gyro3]
+                                            indices, propriedades = find_peaks(y3)
+                                            indices = indices + start_gyro3
+                                            # Ordenar picos por altura
+                                            picos_ordenados = np.argsort(v_gyro[indices])[-2:]  # dois maiores picos
+                                            # Extrair valores e momentos
+                                            maiores_picos3 = v_gyro[indices][picos_ordenados]
+                                            momentos_picos3 = time_interpolated_gyro[indices][picos_ordenados]
+
+                                            y4 = v_gyro[start_gyro4:offset_gyro4]
+                                            indices, propriedades = find_peaks(y4)
+                                            indices = indices + start_gyro4
+                                            # Ordenar picos por altura
+                                            picos_ordenados = np.argsort(v_gyro[indices])[-2:]  # dois maiores picos
+                                            # Extrair valores e momentos
+                                            maiores_picos4 = v_gyro[indices][picos_ordenados]
+                                            momentos_picos4 = time_interpolated_gyro[indices][picos_ordenados]
                                             
                                             fig, ax = plt.subplots(
                                             figsize=(10, 4))
@@ -782,6 +800,14 @@ with col1:
                                                 [momentos_picos2[0],momentos_picos2[0]], [0,30], 'c--')
                                             ax.plot(
                                                 [momentos_picos2[1],momentos_picos2[1]], [0,30], 'c--')
+                                            ax.plot(
+                                                [momentos_picos3[0],momentos_picos3[0]], [0,30], 'c--')
+                                            ax.plot(
+                                                [momentos_picos3[1],momentos_picos3[1]], [0,30], 'c--')
+                                            ax.plot(
+                                                [momentos_picos4[0],momentos_picos4[0]], [0,30], 'c--')
+                                            ax.plot(
+                                                [momentos_picos4[1],momentos_picos4[1]], [0,30], 'c--')
                                             
                                             ax.plot(
                                                 [time_original_kinem[onsets[0]],time_original_kinem[onsets[0]]], [0,30], 'b-',linewidth=largura)
@@ -821,6 +847,10 @@ with col1:
                                             st.pyplot(fig)
                                             
                                             with col1:
+                                                fig, ax = plt.subplots(figsize=(10, 4))0
+                                                ax.plot(time_original_kinem[0:2000], disp_z[0:2000], 'k-')
+                                                ax.plot([0, 0], [0, 2], 'r-')
+                                                st.pyplot(fig)
                                                 st.text(
                                                     f'Número de ciclos = {num_ciclos}')
                                                 for idx in np.arange(4):
@@ -865,6 +895,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
