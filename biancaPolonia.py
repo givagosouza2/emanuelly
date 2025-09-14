@@ -1362,7 +1362,7 @@ with col1:
                                                 ax.plot(
                                                 [momentos_picosv_acc[1],momentos_picosv_acc[1]], [0,30], 'k--')
                                                 ax.set_xlim([time_interpolated_gyro[onset_gyro+start_gyro-100],time_interpolated_gyro[start_gyro2-offset_gyro+100]])
-                                                ax.set_ylim([-0.5,2])
+                                                ax.set_ylim([-0.5,1.2])
                                                 st.pyplot(fig)
 
                                                 fig, ax = plt.subplots(figsize=(10, 4))
@@ -1393,7 +1393,7 @@ with col1:
                                                 ax.plot(
                                                 [momentos_picos2v_acc[1],momentos_picos2v_acc[1]], [0,30], 'k--')
                                                 ax.set_xlim([time_interpolated_gyro[onset_gyro+start_gyro2-100],time_interpolated_gyro[start_gyro3-offset_gyro2+100]])
-                                                ax.set_ylim([-0.5,2])
+                                                ax.set_ylim([-0.5,1.2])
                                                 st.pyplot(fig)
 
                                                 fig, ax = plt.subplots(figsize=(10, 4))
@@ -1424,7 +1424,7 @@ with col1:
                                                 ax.plot(
                                                 [momentos_picos3v_acc[1],momentos_picos3v_acc[1]], [0,30], 'k--')
                                                 ax.set_xlim([time_interpolated_gyro[onset_gyro+start_gyro3-100],time_interpolated_gyro[start_gyro4-offset_gyro3+100]])
-                                                ax.set_ylim([-0.5,2])
+                                                ax.set_ylim([-0.5,1.2])
                                                 st.pyplot(fig)
 
                                                 fig, ax = plt.subplots(figsize=(10, 4))
@@ -1455,7 +1455,7 @@ with col1:
                                                 ax.plot(
                                                 [momentos_picos4v_acc[1],momentos_picos4v_acc[1]], [0,30], 'k--')
                                                 ax.set_xlim([time_interpolated_gyro[onset_gyro+start_gyro4-100],time_interpolated_gyro[offset_gyro4+100]])
-                                                ax.set_ylim([-0.5,2])
+                                                ax.set_ylim([-0.5,1.2])
                                                 st.pyplot(fig)
                                                 for idx in np.arange(4):
                                                     st.text(
@@ -1480,6 +1480,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
