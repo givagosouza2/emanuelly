@@ -556,6 +556,42 @@ with col1:
                                             # Extrair valores e momentos
                                             maiores_picos4ap_acc = ap_acc[indices][picos_ordenados]
                                             momentos_picos4ap_acc = time_interpolated[indices][picos_ordenados]
+
+                                            y = v_acc[onset_gyro+start_gyro:start_gyro2-offset_gyro]
+                                            indices, propriedades = find_peaks(y)
+                                            indices = indices + start_gyro + onset_gyro
+                                            # Ordenar picos por altura
+                                            picos_ordenados = np.argsort(v_acc[indices])[-2:]  # dois maiores picos
+                                            # Extrair valores e momentos
+                                            maiores_picosv_acc = v_acc[indices][picos_ordenados]
+                                            momentos_picosv_acc = time_interpolated[indices][picos_ordenados]
+
+                                            y2 = v_acc[start_gyro2:start_gyro3-offset_gyro2]
+                                            indices, propriedades = find_peaks(y2)
+                                            indices = indices + start_gyro2
+                                            # Ordenar picos por altura
+                                            picos_ordenados = np.argsort(v_acc[indices])[-2:]  # dois maiores picos
+                                            # Extrair valores e momentos
+                                            maiores_picos2v_acc = v_acc[indices][picos_ordenados]
+                                            momentos_picos2v_acc = time_interpolated[indices][picos_ordenados]
+
+                                            y3 = v_acc[start_gyro3:start_gyro4-offset_gyro3]
+                                            indices, propriedades = find_peaks(y3)
+                                            indices = indices + start_gyro3
+                                            # Ordenar picos por altura
+                                            picos_ordenados = np.argsort(v_acc[indices])[-2:]  # dois maiores picos
+                                            # Extrair valores e momentos
+                                            maiores_picos3v_acc = v_acc[indices][picos_ordenados]
+                                            momentos_picos3v_acc = time_interpolated[indices][picos_ordenados]
+
+                                            y4 = v_acc[start_gyro4:offset_gyro4]
+                                            indices, propriedades = find_peaks(y4)
+                                            indices = indices + start_gyro4
+                                            # Ordenar picos por altura
+                                            picos_ordenados = np.argsort(v_acc[indices])[-2:]  # dois maiores picos
+                                            # Extrair valores e momentos
+                                            maiores_picos4v_acc = v_acc[indices][picos_ordenados]
+                                            momentos_picos4v_acc = time_interpolated[indices][picos_ordenados]
                                             
                                             fig, ax = plt.subplots(
                                                 figsize=(10, 4))
@@ -620,6 +656,23 @@ with col1:
                                             figsize=(10, 4))
                                             ax.plot(
                                                 time_interpolated, v_acc, 'k-')
+
+                                            ax.plot(
+                                                [momentos_picosv_acc[0],momentos_picosv_acc[0]], [0,30], 'k--')
+                                            ax.plot(
+                                                [momentos_picosv_acc[1],momentos_picosv_acc[1]], [0,30], 'k--')
+                                            ax.plot(
+                                                [momentos_picos2v_acc[0],momentos_picos2v_acc[0]], [0,30], 'k--')
+                                            ax.plot(
+                                                [momentos_picos2v_acc[1],momentos_picos2v_acc[1]], [0,30], 'k--')
+                                            ax.plot(
+                                                [momentos_picos3v_acc[0],momentos_picos3v_acc[0]], [0,30], 'k--')
+                                            ax.plot(
+                                                [momentos_picos3v_acc[1],momentos_picos3v_acc[1]], [0,30], 'k--')
+                                            ax.plot(
+                                                [momentos_picos4v_acc[0],momentos_picos4v_acc[0]], [0,30], 'k--')
+                                            ax.plot(
+                                                [momentos_picos4v_acc[1],momentos_picos4v_acc[1]], [0,30], 'k--')
 
                                             
                                             ax.plot(
@@ -1023,6 +1076,23 @@ with col1:
                                                 [momentos_picos4ap_acc[0],momentos_picos4ap_acc[0]], [0,30], 'b--')
                                                 ax.plot(
                                                 [momentos_picos4ap_acc[1],momentos_picos4ap_acc[1]], [0,30], 'b--')
+
+                                                ax.plot(
+                                                [momentos_picosv_acc[0],momentos_picosv_acc[0]], [0,30], 'k--')
+                                                ax.plot(
+                                                [momentos_picosv_acc[1],momentos_picosv_acc[1]], [0,30], 'k--')
+                                                ax.plot(
+                                                [momentos_picos2v_acc[0],momentos_picos2v_acc[0]], [0,30], 'k--')
+                                                ax.plot(
+                                                [momentos_picos2v_acc[1],momentos_picos2v_acc[1]], [0,30], 'k--')
+                                                ax.plot(
+                                                [momentos_picos3v_acc[0],momentos_picos3v_acc[0]], [0,30], 'k--')
+                                                ax.plot(
+                                                [momentos_picos3v_acc[1],momentos_picos3v_acc[1]], [0,30], 'k--')
+                                                ax.plot(
+                                                [momentos_picos4v_acc[0],momentos_picos4v_acc[0]], [0,30], 'k--')
+                                                ax.plot(
+                                                [momentos_picos4v_acc[1],momentos_picos4v_acc[1]], [0,30], 'k--')
                                             
                                                 ax.set_ylim([-0.5,5])
                                                 st.pyplot(fig)
@@ -1120,6 +1190,23 @@ with col1:
                                                 [momentos_picos4ap_acc[0],momentos_picos4ap_acc[0]], [0,30], 'b--')
                                                 ax.plot(
                                                 [momentos_picos4ap_acc[1],momentos_picos4ap_acc[1]], [0,30], 'b--')
+
+                                                ax.plot(
+                                                [momentos_picosv_acc[0],momentos_picosv_acc[0]], [0,30], 'k--')
+                                                ax.plot(
+                                                [momentos_picosv_acc[1],momentos_picosv_acc[1]], [0,30], 'k--')
+                                                ax.plot(
+                                                [momentos_picos2v_acc[0],momentos_picos2v_acc[0]], [0,30], 'k--')
+                                                ax.plot(
+                                                [momentos_picos2v_acc[1],momentos_picos2v_acc[1]], [0,30], 'k--')
+                                                ax.plot(
+                                                [momentos_picos3v_acc[0],momentos_picos3v_acc[0]], [0,30], 'k--')
+                                                ax.plot(
+                                                [momentos_picos3v_acc[1],momentos_picos3v_acc[1]], [0,30], 'k--')
+                                                ax.plot(
+                                                [momentos_picos4v_acc[0],momentos_picos4v_acc[0]], [0,30], 'k--')
+                                                ax.plot(
+                                                [momentos_picos4v_acc[1],momentos_picos4v_acc[1]], [0,30], 'k--')
                                                 ax.set_ylim([0,2])
                                                 st.pyplot(fig)
                                                 for idx in np.arange(4):
@@ -1145,6 +1232,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
