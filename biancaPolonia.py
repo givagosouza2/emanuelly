@@ -1144,7 +1144,7 @@ with col1:
                                                 ax.plot(
                                                 [momentos_picos2ml[0],momentos_picos2ml[0]], [0,30], 'r--')
                                                 ax.plot(
-                                                [momentos_picos2ml[1],momentos_pico2sml[1]], [0,30], 'r--')
+                                                [momentos_picos2ml[1],momentos_picos2ml[1]], [0,30], 'r--')
 
                                                 ax.plot(
                                                 [momentos_picos2ap_acc[0],momentos_picos2ap_acc[0]], [0,30], 'b--')
@@ -1294,6 +1294,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
