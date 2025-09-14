@@ -707,21 +707,21 @@ with col1:
                                                 [time_interpolated_gyro[start_gyro4-offset_gyro4],time_interpolated_gyro[start_gyro4-offset_gyro4]], [0,30], 'y--')
 
                                             ax.plot(
-                                                [momentos_picosml[0],momentos_picosml[0]], [0,30], 'c--')
+                                                [momentos_picosml[0],momentos_picosml[0]], [0,30], 'r--')
                                             ax.plot(
-                                                [momentos_picosml[1],momentos_picosml[1]], [0,30], 'c--')
+                                                [momentos_picosml[1],momentos_picosml[1]], [0,30], 'r--')
                                             ax.plot(
-                                                [momentos_picos2ml[0],momentos_picos2ml[0]], [0,30], 'c--')
+                                                [momentos_picos2ml[0],momentos_picos2ml[0]], [0,30], 'r--')
                                             ax.plot(
-                                                [momentos_picos2ml[1],momentos_picos2ml[1]], [0,30], 'c--')
+                                                [momentos_picos2ml[1],momentos_picos2ml[1]], [0,30], 'r--')
                                             ax.plot(
-                                                [momentos_picos3ml[0],momentos_picos3ml[0]], [0,30], 'c--')
+                                                [momentos_picos3ml[0],momentos_picos3ml[0]], [0,30], 'r--')
                                             ax.plot(
-                                                [momentos_picos3ml[1],momentos_picos3ml[1]], [0,30], 'c--')
+                                                [momentos_picos3ml[1],momentos_picos3ml[1]], [0,30], 'r--')
                                             ax.plot(
-                                                [momentos_picos4ml[0],momentos_picos4ml[0]], [0,30], 'c--')
+                                                [momentos_picos4ml[0],momentos_picos4ml[0]], [0,30], 'r--')
                                             ax.plot(
-                                                [momentos_picos4ml[1],momentos_picos4ml[1]], [0,30], 'c--')
+                                                [momentos_picos4ml[1],momentos_picos4ml[1]], [0,30], 'r--')
                                             
                                             ax.plot(
                                                 [time_original_kinem[onsets[0]],time_original_kinem[onsets[0]]], [0,30], 'b-',linewidth=largura)
@@ -938,21 +938,21 @@ with col1:
                                                 [momentos_picos4[1],momentos_picos4[1]], [0,30], 'c--')
 
                                                 ax.plot(
-                                                [momentos_picosml[0],momentos_picosml[0]], [0,30], 'c--')
+                                                [momentos_picosml[0],momentos_picosml[0]], [0,30], 'r--')
                                                 ax.plot(
-                                                [momentos_picosml[1],momentos_picosml[1]], [0,30], 'c--')
+                                                [momentos_picosml[1],momentos_picosml[1]], [0,30], 'r--')
                                                 ax.plot(
-                                                [momentos_picos2ml[0],momentos_picos2ml[0]], [0,30], 'c--')
+                                                [momentos_picos2ml[0],momentos_picos2ml[0]], [0,30], 'r--')
                                                 ax.plot(
-                                                [momentos_picos2ml[1],momentos_picos2ml[1]], [0,30], 'c--')
+                                                [momentos_picos2ml[1],momentos_picos2ml[1]], [0,30], 'r--')
                                                 ax.plot(
-                                                [momentos_picos3ml[0],momentos_picos3ml[0]], [0,30], 'c--')
+                                                [momentos_picos3ml[0],momentos_picos3ml[0]], [0,30], 'r--')
                                                 ax.plot(
-                                                [momentos_picos3ml[1],momentos_picos3ml[1]], [0,30], 'c--')
+                                                [momentos_picos3ml[1],momentos_picos3ml[1]], [0,30], 'r--')
                                                 ax.plot(
-                                                [momentos_picos4ml[0],momentos_picos4ml[0]], [0,30], 'c--')
+                                                [momentos_picos4ml[0],momentos_picos4ml[0]], [0,30], 'r--')
                                                 ax.plot(
-                                                [momentos_picos4ml[1],momentos_picos4ml[1]], [0,30], 'c--')
+                                                [momentos_picos4ml[1],momentos_picos4ml[1]], [0,30], 'r--')
                                             
                                                 ax.set_ylim([-0.5,5])
                                                 st.pyplot(fig)
@@ -1018,21 +1018,21 @@ with col1:
                                                 [momentos_picos4[1],momentos_picos4[1]], [0,30], 'c--')
 
                                                 ax.plot(
-                                                [momentos_picosml[0],momentos_picosml[0]], [0,30], 'c--')
+                                                [momentos_picosml[0],momentos_picosml[0]], [0,30], 'r--')
                                                 ax.plot(
-                                                [momentos_picosml[1],momentos_picosml[1]], [0,30], 'c--')
+                                                [momentos_picosml[1],momentos_picosml[1]], [0,30], 'r--')
                                                 ax.plot(
-                                                [momentos_picos2ml[0],momentos_picos2ml[0]], [0,30], 'c--')
+                                                [momentos_picos2ml[0],momentos_picos2ml[0]], [0,30], 'r--')
                                                 ax.plot(
-                                                [momentos_picos2ml[1],momentos_picos2ml[1]], [0,30], 'c--')
+                                                [momentos_picos2ml[1],momentos_picos2ml[1]], [0,30], 'r--')
                                                 ax.plot(
-                                                [momentos_picos3ml[0],momentos_picos3ml[0]], [0,30], 'c--')
+                                                [momentos_picos3ml[0],momentos_picos3ml[0]], [0,30], 'r--')
                                                 ax.plot(
-                                                [momentos_picos3ml[1],momentos_picos3ml[1]], [0,30], 'c--')
+                                                [momentos_picos3ml[1],momentos_picos3ml[1]], [0,30], 'r--')
                                                 ax.plot(
-                                                [momentos_picos4ml[0],momentos_picos4ml[0]], [0,30], 'c--')
+                                                [momentos_picos4ml[0],momentos_picos4ml[0]], [0,30], 'r--')
                                                 ax.plot(
-                                                [momentos_picos4ml[1],momentos_picos4ml[1]], [0,30], 'c--')
+                                                [momentos_picos4ml[1],momentos_picos4ml[1]], [0,30], 'r--')
                                                 ax.set_ylim([0,2])
                                                 st.pyplot(fig)
                                                 for idx in np.arange(4):
@@ -1058,6 +1058,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
