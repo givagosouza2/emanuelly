@@ -1006,6 +1006,23 @@ with col1:
                                                 [momentos_picos4ml[0],momentos_picos4ml[0]], [0,30], 'r--')
                                                 ax.plot(
                                                 [momentos_picos4ml[1],momentos_picos4ml[1]], [0,30], 'r--')
+
+                                                ax.plot(
+                                                [momentos_picosap_acc[0],momentos_picosap_acc[0]], [0,30], 'b--')
+                                                ax.plot(
+                                                [momentos_picosap_acc[1],momentos_picosap_acc[1]], [0,30], 'b--')
+                                                ax.plot(
+                                                [momentos_picos2ap_acc[0],momentos_picos2ap_acc[0]], [0,30], 'b--')
+                                                ax.plot(
+                                                [momentos_picos2ap_acc[1],momentos_picos2ap_acc[1]], [0,30], 'b--')
+                                                ax.plot(
+                                                [momentos_picos3ap_acc[0],momentos_picos3ap_acc[0]], [0,30], 'b--')
+                                                ax.plot(
+                                                [momentos_picos3ap_acc[1],momentos_picos3ap_acc[1]], [0,30], 'b--')
+                                                ax.plot(
+                                                [momentos_picos4ap_acc[0],momentos_picos4ap_acc[0]], [0,30], 'b--')
+                                                ax.plot(
+                                                [momentos_picos4ap_acc[1],momentos_picos4ap_acc[1]], [0,30], 'b--')
                                             
                                                 ax.set_ylim([-0.5,5])
                                                 st.pyplot(fig)
@@ -1086,6 +1103,23 @@ with col1:
                                                 [momentos_picos4ml[0],momentos_picos4ml[0]], [0,30], 'r--')
                                                 ax.plot(
                                                 [momentos_picos4ml[1],momentos_picos4ml[1]], [0,30], 'r--')
+
+                                                ax.plot(
+                                                [momentos_picosap_acc[0],momentos_picosap_acc[0]], [0,30], 'b--')
+                                                ax.plot(
+                                                [momentos_picosap_acc[1],momentos_picosap_acc[1]], [0,30], 'b--')
+                                                ax.plot(
+                                                [momentos_picos2ap_acc[0],momentos_picos2ap_acc[0]], [0,30], 'b--')
+                                                ax.plot(
+                                                [momentos_picos2ap_acc[1],momentos_picos2ap_acc[1]], [0,30], 'b--')
+                                                ax.plot(
+                                                [momentos_picos3ap_acc[0],momentos_picos3ap_acc[0]], [0,30], 'b--')
+                                                ax.plot(
+                                                [momentos_picos3ap_acc[1],momentos_picos3ap_acc[1]], [0,30], 'b--')
+                                                ax.plot(
+                                                [momentos_picos4ap_acc[0],momentos_picos4ap_acc[0]], [0,30], 'b--')
+                                                ax.plot(
+                                                [momentos_picos4ap_acc[1],momentos_picos4ap_acc[1]], [0,30], 'b--')
                                                 ax.set_ylim([0,2])
                                                 st.pyplot(fig)
                                                 for idx in np.arange(4):
@@ -1111,6 +1145,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
