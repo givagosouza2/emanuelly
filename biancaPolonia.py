@@ -1132,9 +1132,9 @@ with col1:
                                                 ax.plot(time_original_kinem, disp_y, 'k-')
 
                                                 ax.plot(
-                                                [time_interpolated_gyro[start_gyro2-offset_gyro],time_interpolated_gyro[start_gyro2-offset_gyro]], [0,30], 'y--')
-                                                ax.plot(
                                                 [time_interpolated_gyro[onset_gyro+start_gyro2],time_interpolated_gyro[onset_gyro+start_gyro2]], [0,30], 'y--')
+                                                ax.plot(
+                                                [time_interpolated_gyro[start_gyro3-offset_gyro2],time_interpolated_gyro[start_gyro3-offset_gyro2]], [0,30], 'y--')
                                                                                             
                                                 ax.plot(
                                                 [momentos_picos2[0],momentos_picos2[0]], [0,30], 'c--')
@@ -1155,7 +1155,7 @@ with col1:
                                                 [momentos_picos2v_acc[0],momentos_picos2v_acc[0]], [0,30], 'k--')
                                                 ax.plot(
                                                 [momentos_picos2v_acc[1],momentos_picos2v_acc[1]], [0,30], 'k--')
-                                                ax.set_xlim([time_interpolated_gyro[start_gyro2-offset_gyro-100],time_interpolated_gyro[onset_gyro+start_gyro2+100]])
+                                                ax.set_xlim([time_interpolated_gyro[onset_gyro+start_gyro2],time_interpolated_gyro[start_gyro3-offset_gyro2]])
                                                 ax.set_ylim([-0.5,5])
                                                 st.pyplot(fig)
                                                 
@@ -1294,6 +1294,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
