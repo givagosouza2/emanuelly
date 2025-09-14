@@ -387,6 +387,55 @@ with col1:
 
                                         st.pyplot(fig)
                                         with col3:
+                                            for index,valor in enumerate(time_interpolated_gyro):
+                                                if valor > time_original_kinem[onsets[0]]:
+                                                    start_gyro = index-1
+                                                    break
+                                                    
+                                            for index,valor in enumerate(ml_gyro[start_gyro:-1]):
+                                                if valor > 0.15:
+                                                    onset_gyro = index
+                                                    break
+
+                                            for index,valor in enumerate(time_interpolated_gyro):
+                                                if valor > time_original_kinem[onsets[1]]:
+                                                    start_gyro2 = index-1
+                                                    break
+                                                    
+                                            for index in range(len(ml_gyro[0:start_gyro2]) - 1, start_gyro + 100, -1):
+                                                valor = ml_gyro[index]
+                                                if valor > 0.15:
+                                                    offset_gyro = start_gyro2-index-1
+                                                    break
+                                                    
+                                            for index,valor in enumerate(time_interpolated_gyro):
+                                                if valor > time_original_kinem[onsets[2]]:
+                                                    start_gyro3 = index-1
+                                                    break
+
+                                            for index in range(len(ml_gyro[0:start_gyro3]) - 1, start_gyro2 + 100, -1):
+                                                valor = ml_gyro[index]
+                                                if valor > 0.15:
+                                                    offset_gyro2 = start_gyro3-index-1
+                                                    break
+
+                                            for index,valor in enumerate(time_interpolated_gyro):
+                                                if valor > time_original_kinem[onsets[3]]:
+                                                    start_gyro4 = index-1
+                                                    break
+
+                                            for index in range(len(ml_gyro[0:start_gyro4]) - 1, start_gyro3 + 100, -1):
+                                                valor = ml_gyro[index]
+                                                if valor > 0.15:
+                                                    offset_gyro3 = start_gyro4-index-1
+                                                    break
+
+                                            for index in range(len(ml_gyro) - 1, start_gyro4 + 100, -1):
+                                                valor = ml_gyro[index]
+                                                if valor > 0.15:
+                                                    offset_gyro4 = start_gyro4-index-1
+                                                    break
+                                            
                                             fig, ax = plt.subplots(
                                                 figsize=(10, 4))
                                             ax.plot(
@@ -472,11 +521,63 @@ with col1:
                                             ax.set_ylim([0,10])
                                             st.pyplot(fig)
 
+                                            y = ap_acc[onset_gyro+start_gyro:start_gyro2-offset_gyro]
+                                            indices, propriedades = find_peaks(y)
+                                            indices = indices + start_gyro + onset_gyro
+                                            # Ordenar picos por altura
+                                            picos_ordenados = np.argsort(ap_acc[indices])[-2:]  # dois maiores picos
+                                            # Extrair valores e momentos
+                                            maiores_picosap_acc = ap_acc[indices][picos_ordenados]
+                                            momentos_picosap_acc = time_interpolated[indices][picos_ordenados]
+
+                                            y2 = ap_acc[start_gyro2:start_gyro3-offset_gyro2]
+                                            indices, propriedades = find_peaks(y2)
+                                            indices = indices + start_gyro2
+                                            # Ordenar picos por altura
+                                            picos_ordenados = np.argsort(ap_acc[indices])[-2:]  # dois maiores picos
+                                            # Extrair valores e momentos
+                                            maiores_picos2ap_acc = ap_acc[indices][picos_ordenados]
+                                            momentos_picos2ap_acc = time_interpolated[indices][picos_ordenados]
+
+                                            y3 = ap_acc[start_gyro3:start_gyro4-offset_gyro3]
+                                            indices, propriedades = find_peaks(y3)
+                                            indices = indices + start_gyro3
+                                            # Ordenar picos por altura
+                                            picos_ordenados = np.argsort(ap_acc[indices])[-2:]  # dois maiores picos
+                                            # Extrair valores e momentos
+                                            maiores_picos3ap_acc = ap_acc[indices][picos_ordenados]
+                                            momentos_picos3ap_acc = time_interpolated[indices][picos_ordenados]
+
+                                            y4 = ap_acc[start_gyro4:offset_gyro4]
+                                            indices, propriedades = find_peaks(y4)
+                                            indices = indices + start_gyro4
+                                            # Ordenar picos por altura
+                                            picos_ordenados = np.argsort(ap_acc[indices])[-2:]  # dois maiores picos
+                                            # Extrair valores e momentos
+                                            maiores_picos4ap_acc = ap_acc[indices][picos_ordenados]
+                                            momentos_picos4ap_acc = time_interpolated[indices][picos_ordenados]
+                                            
                                             fig, ax = plt.subplots(
                                                 figsize=(10, 4))
                                             ax.plot(
                                                 time_interpolated, ap_acc, 'k-')
 
+                                            ax.plot(
+                                                [momentos_picosap_acc[0],momentos_picosap_acc[0]], [0,30], 'b--')
+                                            ax.plot(
+                                                [momentos_picosap_acc[1],momentos_picosap_acc[1]], [0,30], 'b--')
+                                            ax.plot(
+                                                [momentos_picos2ap_acc[0],momentos_picos2ap_acc[0]], [0,30], 'b--')
+                                            ax.plot(
+                                                [momentos_picos2ap_acc[1],momentos_picos2ap_acc[1]], [0,30], 'b--')
+                                            ax.plot(
+                                                [momentos_picos3ap_acc[0],momentos_picos3ap_acc[0]], [0,30], 'b--')
+                                            ax.plot(
+                                                [momentos_picos3ap_acc[1],momentos_picos3ap_acc[1]], [0,30], 'b--')
+                                            ax.plot(
+                                                [momentos_picos4ap_acc[0],momentos_picos4ap_acc[0]], [0,30], 'b--')
+                                            ax.plot(
+                                                [momentos_picos4ap_acc[1],momentos_picos4ap_acc[1]], [0,30], 'b--')
                                             
                                             ax.plot(
                                                 [time_original_kinem[onsets[0]],time_original_kinem[onsets[0]]], [0,30], 'b-',linewidth=largura)
@@ -600,54 +701,6 @@ with col1:
                                             ax.set_ylabel("Amplitude")
                                             st.pyplot(fig)
 
-                                            for index,valor in enumerate(time_interpolated_gyro):
-                                                if valor > time_original_kinem[onsets[0]]:
-                                                    start_gyro = index-1
-                                                    break
-                                                    
-                                            for index,valor in enumerate(ml_gyro[start_gyro:-1]):
-                                                if valor > 0.15:
-                                                    onset_gyro = index
-                                                    break
-
-                                            for index,valor in enumerate(time_interpolated_gyro):
-                                                if valor > time_original_kinem[onsets[1]]:
-                                                    start_gyro2 = index-1
-                                                    break
-                                                    
-                                            for index in range(len(ml_gyro[0:start_gyro2]) - 1, start_gyro + 100, -1):
-                                                valor = ml_gyro[index]
-                                                if valor > 0.15:
-                                                    offset_gyro = start_gyro2-index-1
-                                                    break
-                                                    
-                                            for index,valor in enumerate(time_interpolated_gyro):
-                                                if valor > time_original_kinem[onsets[2]]:
-                                                    start_gyro3 = index-1
-                                                    break
-
-                                            for index in range(len(ml_gyro[0:start_gyro3]) - 1, start_gyro2 + 100, -1):
-                                                valor = ml_gyro[index]
-                                                if valor > 0.15:
-                                                    offset_gyro2 = start_gyro3-index-1
-                                                    break
-
-                                            for index,valor in enumerate(time_interpolated_gyro):
-                                                if valor > time_original_kinem[onsets[3]]:
-                                                    start_gyro4 = index-1
-                                                    break
-
-                                            for index in range(len(ml_gyro[0:start_gyro4]) - 1, start_gyro3 + 100, -1):
-                                                valor = ml_gyro[index]
-                                                if valor > 0.15:
-                                                    offset_gyro3 = start_gyro4-index-1
-                                                    break
-
-                                            for index in range(len(ml_gyro) - 1, start_gyro4 + 100, -1):
-                                                valor = ml_gyro[index]
-                                                if valor > 0.15:
-                                                    offset_gyro4 = start_gyro4-index-1
-                                                    break
 
                                             y = ml_gyro[onset_gyro+start_gyro:start_gyro2-offset_gyro]
                                             indices, propriedades = find_peaks(y)
@@ -1058,6 +1111,7 @@ with col1:
                                                 for idx in np.arange(4):
                                                     st.text(
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+
 
 
 
