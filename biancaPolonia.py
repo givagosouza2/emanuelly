@@ -8,47 +8,17 @@ import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
 import io
 
-if "export_rows" not in st.session_state:
-    st.session_state["export_rows"] = []
-
-# Helper para pegar nome de arquivo de forma segura
 def _safe_name(up):
     try:
         return up.name
     except Exception:
         return ""
 
-# Monte aqui os campos que você quer exportar por ciclo
-def _build_row(i):
-    row = {
-        "arquivo_kinem": _safe_name(uploaded_file_kinem) if 'uploaded_file_kinem' in locals() else "",
-        "arquivo_acc": _safe_name(uploaded_file_acc) if 'uploaded_file_acc' in locals() else "",
-        "arquivo_gyro": _safe_name(uploaded_file_gyro) if 'uploaded_file_gyro' in locals() else "",
-        "ciclo": int(i + 1),
-        # --- Variáveis já existentes no seu código (tempo) ---
-        "t_onset": float(time_original_kinem[onsets[i]]) if len(onsets) > i else None,
-        "t_peak": float(time_original_kinem[peaks[i]]) if len(peaks) > i else None,
-        "t_offset": float(time_original_kinem[offsets[i]]) if len(offsets) > i else None,
-        "duracao_total": float(time_original_kinem[offsets[i]] - time_original_kinem[onsets[i]]) if len(onsets) > i and len(offsets) > i else None,
-        "duracao_ida": float(time_original_kinem[peaks[i]] - time_original_kinem[onsets[i]]) if len(onsets) > i and len(peaks) > i else None,
-        "duracao_volta": float(time_original_kinem[offsets[i]] - time_original_kinem[peaks[i]]) if len(offsets) > i and len(peaks) > i else None,
-        "t_standing": float(standing_time[i]) if "standing_time" in locals() and len(standing_time) > i else None,
-        "t_sitting": float(sitting_time[i]) if "sitting_time" in locals() and len(sitting_time) > i else None,
-        # --- 👇 Exemplos/estrutura para você ligar outras métricas (descomente/ajuste) ---
-        # "ap_acc_peak1_time": float(momentos_picosap_acc[0]) if "momentos_picosap_acc" in locals() and len(momentos_picosap_acc) > 0 else None,
-        # "ap_acc_peak2_time": float(momentos_picosap_acc[1]) if "momentos_picosap_acc" in locals() and len(momentos_picosap_acc) > 1 else None,
-        # "ap_acc_peak1_value": float(maiores_picosap_acc[0]) if "maiores_picosap_acc" in locals() and len(maiores_picosap_acc) > 0 else None,
-        # "v_acc_peak1_time": float(momentos_picosv_acc[0]) if "momentos_picosv_acc" in locals() and len(momentos_picosv_acc) > 0 else None,
-        # "v_acc_peak1_value": float(maiores_picosv_acc[0]) if "maiores_picosv_acc" in locals() and len(maiores_picosv_acc) > 0 else None,
-        # "ml_gyro_peak1_time": float(momentos_picosml[0]) if "momentos_picosml" in locals() and len(momentos_picosml) > 0 else None,
-        # "ml_gyro_peak1_value": float(maiores_picosml[0]) if "maiores_picosml" in locals() and len(maiores_picosml) > 0 else None,
-        # "gyro_norm_mean": float(np.mean(gyro_norm_filtered)) if "gyro_norm_filtered" in locals() else None,
-        # "acc_norm_mean": float(np.mean(acc_norm_filtered)) if "acc_norm_filtered" in locals() else None,
-        # "fs_acc": int(new_fs) if "new_fs" in locals() else None,
-        # "fs_kinem": int(new_fs_kinem) if "new_fs_kinem" in locals() else None,
-    }
-    return row
-
+def _safe_val(x):
+    try:
+        return float(x)
+    except Exception:
+        return x  # deixa string/None como está
 
 
 # Função para filtro passa-baixa
@@ -1526,43 +1496,64 @@ with col1:
                                                         f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
                                             st.markdown("---")
                                             st.subheader("📤 Exportação das variáveis de desempenho")
-                                            col_exp1, col_exp2, col_exp3 = st.columns([1,1,1])
+                                            pares = [
+                                                # Identificação dos arquivos
+                                                ("arquivo_kinem", _safe_name(uploaded_file_kinem) if 'uploaded_file_kinem' in locals() else ""),
+                                                ("arquivo_acc",   _safe_name(uploaded_file_acc)   if 'uploaded_file_acc'   in locals() else ""),
+                                                ("arquivo_gyro",  _safe_name(uploaded_file_gyro)  if 'uploaded_file_gyro'  in locals() else ""),
+                                            
+                                                # Exemplos gerais
+                                                ("num_ciclos", int(num_ciclos) if 'num_ciclos' in locals() else None),
+                                            
+                                                # Exemplos do Ciclo 1 (adicione mais ciclos duplicando e renomeando as chaves)
+                                                ("c1_t_onset",   _safe_val(time_original_kinem[onsets[0]]) if 'onsets' in locals() and len(onsets) > 0 else None),
+                                                ("c1_t_peak",    _safe_val(time_original_kinem[peaks[0]])  if 'peaks'  in locals() and len(peaks)  > 0 else None),
+                                                ("c1_t_offset",  _safe_val(time_original_kinem[offsets[0]]) if 'offsets' in locals() and len(offsets) > 0 else None),
+                                                ("c1_dur_total", _safe_val(time_original_kinem[offsets[0]] - time_original_kinem[onsets[0]]) if 'onsets' in locals() and 'offsets' in locals() and len(onsets) > 0 and len(offsets) > 0 else None),
+                                                ("c1_dur_ida",   _safe_val(time_original_kinem[peaks[0]]   - time_original_kinem[onsets[0]]) if 'onsets' in locals() and 'peaks' in locals() and len(onsets) > 0 and len(peaks) > 0 else None),
+                                                ("c1_dur_volta", _safe_val(time_original_kinem[offsets[0]] - time_original_kinem[peaks[0]])  if 'offsets' in locals() and 'peaks' in locals() and len(offsets) > 0 and len(peaks) > 0 else None),
+                                                ("c1_t_standing", _safe_val(standing_time[0]) if 'standing_time' in locals() and len(standing_time) > 0 else None),
+                                                ("c1_t_sitting",  _safe_val(sitting_time[0])  if 'sitting_time'  in locals() and len(sitting_time)  > 0 else None),
+                                            
+                                                # Exemplos de picos (adicione/remova conforme suas métricas)
+                                                # ("c1_ap_acc_peak1_time", _safe_val(momentos_picosap_acc[0]) if 'momentos_picosap_acc' in locals() and len(momentos_picosap_acc) > 0 else None),
+                                                # ("c1_ap_acc_peak1_val",  _safe_val(maiores_picosap_acc[0])  if 'maiores_picosap_acc'  in locals() and len(maiores_picosap_acc)  > 0 else None),
+                                                # ("acc_norm_mean", _safe_val(np.mean(acc_norm_filtered)) if 'acc_norm_filtered' in locals() else None),
+                                                # ("gyro_norm_mean", _safe_val(np.mean(gyro_norm_filtered)) if 'gyro_norm_filtered' in locals() else None),
+                                            
+                                                # Duplicar os blocos acima para c2_, c3_, c4_ etc. se quiser exportar por ciclo.
+                                            ]
+                                            
+                                            # Monta DataFrame 2 colunas sem usar for
+                                            df_export_2cols = pd.DataFrame(
+                                                {"variavel": [p[0] for p in pares],
+                                                 "valor":    [p[1] for p in pares]}
+                                            )
+                                            
+                                            # Prévia
+                                            st.caption("Prévia do arquivo (variável, valor)")
+                                            st.dataframe(df_export_2cols, use_container_width=True)
+                                            
+                                            # Botões de download (CSV e Excel)
+                                            csv_bytes = df_export_2cols.to_csv(index=False).encode("utf-8")
+                                            st.download_button(
+                                                label="⬇️ Baixar CSV (variável, valor)",
+                                                data=csv_bytes,
+                                                file_name="desempenho_2colunas.csv",
+                                                mime="text/csv",
+                                            )
+                                            
+                                            # Opcional: Excel (sem loop)
+                                            buffer_xlsx = io.BytesIO()
+                                            with pd.ExcelWriter(buffer_xlsx, engine="xlsxwriter") as writer:
+                                                df_export_2cols.to_excel(writer, index=False, sheet_name="variaveis")
+                                            st.download_button(
+                                                label="⬇️ Baixar Excel (variável, valor)",
+                                                data=buffer_xlsx.getvalue(),
+                                                file_name="desempenho_2colunas.xlsx",
+                                                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                            )
 
-                                            with col_exp1:
-                                                habilitado = 'num_ciclos' in locals() and num_ciclos is not None and num_ciclos > 0
-                                                if st.button("➕ Adicionar ciclos atuais à tabela", disabled=not habilitado):
-                                                    if not habilitado:
-                                                        st.warning("Nenhum ciclo detectado para exportar.")
-                                                    else:
-                                                        for i in range(num_ciclos):
-                                                            st.session_state["export_rows"].append(_build_row(i))
-                                                        st.success(f"{num_ciclos} linha(s) adicionada(s).")
-                                            
-                                            with col_exp2:
-                                                if st.button("🧹 Limpar tabela"):
-                                                    st.session_state["export_rows"] = []
-                                                    st.info("Tabela limpa.")
-                                            
-                                            with col_exp3:
-                                                if st.session_state["export_rows"]:
-                                                    df_export = pd.DataFrame(st.session_state["export_rows"])
-                                                    csv_bytes = df_export.to_csv(index=False).encode("utf-8")
-                                                    st.download_button(
-                                                        label="⬇️ Baixar CSV",
-                                                        data=csv_bytes,
-                                                        file_name="desempenho_sinais.csv",
-                                                        mime="text/csv",
-                                                    )
-                                                else:
-                                                    st.write("Nenhuma linha na tabela de exportação ainda.")
-                                            
-                                            # Prévia da tabela (se existir)
-                                            if st.session_state["export_rows"]:
-                                                st.caption("Prévia da tabela de exportação")
-                                                st.dataframe(pd.DataFrame(st.session_state["export_rows"]))
-                                                                                                                                    
-                                                     
-                                            
 
 
 
