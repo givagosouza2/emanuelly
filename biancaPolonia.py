@@ -543,7 +543,13 @@ with col1:
                                             # Extrair valores e momentos
                                             maiores_picosap_acc = ap_acc[indices][picos_ordenados]
                                             momentos_picosap_acc = time_interpolated[indices][picos_ordenados]
-
+                                            if momentos_picosap_acc[0] > momentos_picosap_acc[1]:
+                                                t_acc_ap_pico_levantar_ciclo_1 = momentos_picosap_acc[1]
+                                                t_acc_ap_pico_sentar_ciclo_1 = momentos_picosap_acc[0]
+                                            else:
+                                                t_acc_ap_pico_sentar_ciclo_1 = momentos_picosap_acc[1]
+                                                t_acc_ap_pico_levantar_ciclo_1 = momentos_picosap_acc[0]
+                                                
                                             y2 = ap_acc[start_gyro2:start_gyro3-offset_gyro2]
                                             indices, propriedades = find_peaks(y2)
                                             indices = indices + start_gyro2
@@ -552,6 +558,12 @@ with col1:
                                             # Extrair valores e momentos
                                             maiores_picos2ap_acc = ap_acc[indices][picos_ordenados]
                                             momentos_picos2ap_acc = time_interpolated[indices][picos_ordenados]
+                                            if momentos_picos2ap_acc[0] > momentos_picos2ap_acc[1]:
+                                                t_acc_ap_pico_levantar_ciclo_2 = momentos_picos2ap_acc[1]
+                                                t_acc_ap_pico_sentar_ciclo_2 = momentos_picos2ap_acc[0]
+                                            else:
+                                                t_acc_ap_pico_sentar_ciclo_2 = momentos_picos2ap_acc[1]
+                                                t_acc_ap_pico_levantar_ciclo_2 = momentos_picos2ap_acc[0]
 
                                             y3 = ap_acc[start_gyro3:start_gyro4-offset_gyro3]
                                             indices, propriedades = find_peaks(y3)
@@ -561,6 +573,12 @@ with col1:
                                             # Extrair valores e momentos
                                             maiores_picos3ap_acc = ap_acc[indices][picos_ordenados]
                                             momentos_picos3ap_acc = time_interpolated[indices][picos_ordenados]
+                                            if momentos_picos3ap_acc[0] > momentos_picos3ap_acc[1]:
+                                                t_acc_ap_pico_levantar_ciclo_3 = momentos_picos3ap_acc[1]
+                                                t_acc_ap_pico_sentar_ciclo_3 = momentos_picos3ap_acc[0]
+                                            else:
+                                                t_acc_ap_pico_sentar_ciclo_3 = momentos_picos3ap_acc[1]
+                                                t_acc_ap_pico_levantar_ciclo_3 = momentos_picos3ap_acc[0]
 
                                             y4 = ap_acc[start_gyro4:offset_gyro4]
                                             indices, propriedades = find_peaks(y4)
@@ -570,6 +588,12 @@ with col1:
                                             # Extrair valores e momentos
                                             maiores_picos4ap_acc = ap_acc[indices][picos_ordenados]
                                             momentos_picos4ap_acc = time_interpolated[indices][picos_ordenados]
+                                            if momentos_picos4ap_acc[0] > momentos_picos4ap_acc[1]:
+                                                t_acc_ap_pico_levantar_ciclo_4 = momentos_picos4ap_acc[1]
+                                                t_acc_ap_pico_sentar_ciclo_4 = momentos_picos4ap_acc[0]
+                                            else:
+                                                t_acc_ap_pico_sentar_ciclo_4 = momentos_picos4ap_acc[1]
+                                                t_acc_ap_pico_levantar_ciclo_4 = momentos_picos4ap_acc[0]
 
                                             y = v_acc[onset_gyro+start_gyro:start_gyro2-offset_gyro]
                                             indices, propriedades = find_peaks(y)
@@ -1506,14 +1530,40 @@ with col1:
                                                 ("num_ciclos", int(num_ciclos) if 'num_ciclos' in locals() else None),
                                             
                                                 # Exemplos do Ciclo 1 (adicione mais ciclos duplicando e renomeando as chaves)
-                                                ("c1_t_onset",   _safe_val(time_original_kinem[onsets[0]]) if 'onsets' in locals() and len(onsets) > 0 else None),
-                                                ("c1_t_peak",    _safe_val(time_original_kinem[peaks[0]])  if 'peaks'  in locals() and len(peaks)  > 0 else None),
-                                                ("c1_t_offset",  _safe_val(time_original_kinem[offsets[0]]) if 'offsets' in locals() and len(offsets) > 0 else None),
-                                                ("c1_dur_total", _safe_val(time_original_kinem[offsets[0]] - time_original_kinem[onsets[0]]) if 'onsets' in locals() and 'offsets' in locals() and len(onsets) > 0 and len(offsets) > 0 else None),
-                                                ("c1_dur_ida",   _safe_val(time_original_kinem[peaks[0]]   - time_original_kinem[onsets[0]]) if 'onsets' in locals() and 'peaks' in locals() and len(onsets) > 0 and len(peaks) > 0 else None),
-                                                ("c1_dur_volta", _safe_val(time_original_kinem[offsets[0]] - time_original_kinem[peaks[0]])  if 'offsets' in locals() and 'peaks' in locals() and len(offsets) > 0 and len(peaks) > 0 else None),
-                                                ("c1_t_standing", _safe_val(standing_time[0]) if 'standing_time' in locals() and len(standing_time) > 0 else None),
-                                                ("c1_t_sitting",  _safe_val(sitting_time[0])  if 'sitting_time'  in locals() and len(sitting_time)  > 0 else None),
+                                                ("Início do ciclo 1 Cinemática",   _safe_val(time_original_kinem[onsets[0]]) if 'onsets' in locals() and len(onsets) > 0 else None),
+                                                ("Momento do retorno do ciclo 1 Cinemática",    _safe_val(time_original_kinem[peaks[0]])  if 'peaks'  in locals() and len(peaks)  > 0 else None),
+                                                ("Final do ciclo 1 Cinemática",  _safe_val(time_original_kinem[offsets[0]]) if 'offsets' in locals() and len(offsets) > 0 else None),
+                                                ("Momento final do levantar do ciclo 1 Cinemática", _safe_val(standing_time[0]) if 'standing_time' in locals() and len(standing_time) > 0 else None),
+                                                ("Momento inicial do sentar do ciclo 1 Cinemática",  _safe_val(sitting_time[0])  if 'sitting_time'  in locals() and len(sitting_time)  > 0 else None),
+                                                
+                                                ("Início do ciclo 2 Cinemática",   _safe_val(time_original_kinem[onsets[1]]) if 'onsets' in locals() and len(onsets) > 0 else None),
+                                                ("Momento do retorno do ciclo 2 Cinemática",    _safe_val(time_original_kinem[peaks[1]])  if 'peaks'  in locals() and len(peaks)  > 0 else None),
+                                                ("Final do ciclo 2 Cinemática",  _safe_val(time_original_kinem[offsets[1]]) if 'offsets' in locals() and len(offsets) > 0 else None),
+                                                ("Momento final do levantar do ciclo 2 Cinemática", _safe_val(standing_time[1]) if 'standing_time' in locals() and len(standing_time) > 0 else None),
+                                                ("Momento inicial do sentar do ciclo 2 Cinemática",  _safe_val(sitting_time[1])  if 'sitting_time'  in locals() and len(sitting_time)  > 0 else None),
+
+                                                ("Início do ciclo 3 Cinemática",   _safe_val(time_original_kinem[onsets[2]]) if 'onsets' in locals() and len(onsets) > 0 else None),
+                                                ("Momento do retorno do ciclo 3 Cinemática",    _safe_val(time_original_kinem[peaks[2]])  if 'peaks'  in locals() and len(peaks)  > 0 else None),
+                                                ("Final do ciclo 3 Cinemática",  _safe_val(time_original_kinem[offsets[2]]) if 'offsets' in locals() and len(offsets) > 0 else None),
+                                                ("Momento final do levantar do ciclo 3 Cinemática", _safe_val(standing_time[2]) if 'standing_time' in locals() and len(standing_time) > 0 else None),
+                                                ("Momento inicial do sentar do ciclo 3 Cinemática",  _safe_val(sitting_time[2])  if 'sitting_time'  in locals() and len(sitting_time)  > 0 else None),
+
+                                                ("Início do ciclo 4 Cinemática",   _safe_val(time_original_kinem[onsets[3]]) if 'onsets' in locals() and len(onsets) > 0 else None),
+                                                ("Momento do retorno do ciclo 4 Cinemática",    _safe_val(time_original_kinem[peaks[3]])  if 'peaks'  in locals() and len(peaks)  > 0 else None),
+                                                ("Final do ciclo 4 Cinemática",  _safe_val(time_original_kinem[offsets[3]]) if 'offsets' in locals() and len(offsets) > 0 else None),
+                                                ("Momento final do levantar do ciclo 4 Cinemática", _safe_val(standing_time[3]) if 'standing_time' in locals() and len(standing_time) > 0 else None),
+                                                ("Momento inicial do sentar do ciclo 4 Cinemática",  _safe_val(sitting_time[3])  if 'sitting_time'  in locals() and len(sitting_time)  > 0 else None),
+
+                                                ("Momento de pico de aceleração AP durante o levantar do ciclo 1 Acelerômetro",   _safe_val(t_acc_ap_pico_sentar_ciclo_1)),
+                                                ("Momento de pico de aceleração AP durante o levantar do ciclo 2 Acelerômetro",   _safe_val(t_acc_ap_pico_sentar_ciclo_2)),
+                                                ("Momento de pico de aceleração AP durante o levantar do ciclo 3 Acelerômetro",   _safe_val(t_acc_ap_pico_sentar_ciclo_3)),
+                                                ("Momento de pico de aceleração AP durante o levantar do ciclo 4 Acelerômetro",   _safe_val(t_acc_ap_pico_sentar_ciclo_4)),
+                                                
+                                                ("Momento de pico de aceleração AP durante o sentar do ciclo 1 Acelerômetro",   _safe_val(t_acc_ap_pico_levantar_ciclo_1)),
+                                                ("Momento de pico de aceleração AP durante o sentar do ciclo 2 Acelerômetro",   _safe_val(t_acc_ap_pico_levantar_ciclo_2)),
+                                                ("Momento de pico de aceleração AP durante o sentar do ciclo 3 Acelerômetro",   _safe_val(t_acc_ap_pico_levantar_ciclo_3)),
+                                                ("Momento de pico de aceleração AP durante o sentar do ciclo 4 Acelerômetro",   _safe_val(t_acc_ap_pico_levantar_ciclo_4)),
+                                                
                                             
                                                 # Exemplos de picos (adicione/remova conforme suas métricas)
                                                 # ("c1_ap_acc_peak1_time", _safe_val(momentos_picosap_acc[0]) if 'momentos_picosap_acc' in locals() and len(momentos_picosap_acc) > 0 else None),
@@ -1543,16 +1593,8 @@ with col1:
                                                 mime="text/csv",
                                             )
                                             
-                                            # Opcional: Excel (sem loop)
-                                            buffer_xlsx = io.BytesIO()
-                                            with pd.ExcelWriter(buffer_xlsx, engine="xlsxwriter") as writer:
-                                                df_export_2cols.to_excel(writer, index=False, sheet_name="variaveis")
-                                            st.download_button(
-                                                label="⬇️ Baixar Excel (variável, valor)",
-                                                data=buffer_xlsx.getvalue(),
-                                                file_name="desempenho_2colunas.xlsx",
-                                                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                                            )
+                                            
+
 
 
 
