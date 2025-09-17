@@ -1259,26 +1259,6 @@ with col1:
                                                 ax.set_ylim([-0.5,5])
                                                 st.pyplot(fig)
                                                 
-                                                st.text(
-                                                    f'Número de ciclos = {num_ciclos}')
-                                                for idx in np.arange(4):
-                                                    st.text(
-                                                        f'Inicio do ciclo {idx+1} = {time_original_kinem[onsets[idx]]}')
-                                                for idx in np.arange(4):
-                                                    st.text(
-                                                        f'Final do ciclo {idx+1} = {time_original_kinem[offsets[idx]]}')
-                                                for idx in np.arange(4):
-                                                    st.text(
-                                                        f'Tempo de retorno do ciclo {idx+1} = {time_original_kinem[peaks[idx]]}')
-                                                for idx in np.arange(4):
-                                                    st.text(
-                                                        f'Duração do ciclo {idx+1} = {time_original_kinem[offsets[idx]]-time_original_kinem[onsets[idx]]}')
-                                                for idx in np.arange(4):
-                                                    st.text(
-                                                        f'Duração da ida do ciclo {idx+1} = {time_original_kinem[peaks[idx]] - time_original_kinem[onsets[idx]]}')
-                                                for idx in np.arange(4):
-                                                    st.text(
-                                                        f'Duração da volta do ciclo {idx+1} = {time_original_kinem[offsets[idx]] - time_original_kinem[peaks[idx]]}')
                                             with col2:
                                                 fig, ax = plt.subplots(figsize=(10, 4))
                                                 ax.plot(
@@ -1495,29 +1475,7 @@ with col1:
                                                 ax.set_xlim([time_interpolated_gyro[onset_gyro+start_gyro4-100],time_interpolated_gyro[offset_gyro4+100]])
                                                 ax.set_ylim([0.6,1.2])
                                                 st.pyplot(fig)
-                                                for idx in np.arange(4):
-                                                    st.text(
-                                                        f'Momento final da subida do ciclo {idx+1} = {standing_time[idx]}')
-
-                                                for idx in np.arange(4):
-                                                    st.text(
-                                                        f'Momento inicial da descida do ciclo {idx+1} = {sitting_time[idx]}')
-
-                                                for idx in np.arange(4):
-                                                    st.text(
-                                                        f'Duração da subida do ciclo {idx+1} = {standing_time[idx]-time_original_kinem[onsets[idx]]}')
-
-                                                for idx in np.arange(4):
-                                                    st.text(
-                                                        f'Duração da descida do ciclo {idx+1} = {time_original_kinem[offsets[idx]] - sitting_time[idx]}')
-
-                                                for idx in np.arange(4):
-                                                    st.text(
-                                                        f'Duração da ida {idx+1} = {time_original_kinem[peaks[idx]] - standing_time[idx]}')
-
-                                                for idx in np.arange(4):
-                                                    st.text(
-                                                        f'Duração da volta {idx+1} = {sitting_time[idx] - time_original_kinem[peaks[idx]]}')
+                                                
                                             st.markdown("---")
                                             st.subheader("📤 Exportação das variáveis de desempenho")
                                             pares = [
@@ -1565,13 +1523,7 @@ with col1:
                                                 ("Momento de pico de aceleração AP durante o sentar do ciclo 4 Acelerômetro",   _safe_val(t_acc_ap_pico_levantar_ciclo_4)),
                                                 
                                             
-                                                # Exemplos de picos (adicione/remova conforme suas métricas)
-                                                # ("c1_ap_acc_peak1_time", _safe_val(momentos_picosap_acc[0]) if 'momentos_picosap_acc' in locals() and len(momentos_picosap_acc) > 0 else None),
-                                                # ("c1_ap_acc_peak1_val",  _safe_val(maiores_picosap_acc[0])  if 'maiores_picosap_acc'  in locals() and len(maiores_picosap_acc)  > 0 else None),
-                                                # ("acc_norm_mean", _safe_val(np.mean(acc_norm_filtered)) if 'acc_norm_filtered' in locals() else None),
-                                                # ("gyro_norm_mean", _safe_val(np.mean(gyro_norm_filtered)) if 'gyro_norm_filtered' in locals() else None),
-                                            
-                                                # Duplicar os blocos acima para c2_, c3_, c4_ etc. se quiser exportar por ciclo.
+                                                
                                             ]
                                             
                                             # Monta DataFrame 2 colunas sem usar for
@@ -1594,6 +1546,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
