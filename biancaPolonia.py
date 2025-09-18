@@ -1015,6 +1015,14 @@ with col1:
                                             maiores_picos = v_gyro[indices][picos_ordenados]
                                             momentos_picos = time_interpolated_gyro[indices][picos_ordenados]
 
+                                            if momentos_picos[0] > momentos_picos[1]:
+                                                t_gyro_v_pico_giro3m_ciclo_1 = momentos_picos[1]
+                                                t_gyro_v_pico_giro6m_ciclo_1 = momentos_picos[0]
+                                            else:
+                                                t_gyro_v_pico_giro6m_ciclo_1 = momentos_picos[1]
+                                                t_gyro_v_pico_giro3m_ciclo_1 = momentos_picos[0]
+
+
                                             y2 = v_gyro[start_gyro2:start_gyro3-offset_gyro2]
                                             indices, propriedades = find_peaks(y2)
                                             indices = indices + start_gyro2
@@ -1023,6 +1031,13 @@ with col1:
                                             # Extrair valores e momentos
                                             maiores_picos2 = v_gyro[indices][picos_ordenados]
                                             momentos_picos2 = time_interpolated_gyro[indices][picos_ordenados]
+
+                                            if momentos_picos2[0] > momentos_picos2[1]:
+                                                t_gyro_v_pico_giro3m_ciclo_2 = momentos_picos2[1]
+                                                t_gyro_v_pico_giro6m_ciclo_2 = momentos_picos2[0]
+                                            else:
+                                                t_gyro_v_pico_giro6m_ciclo_2 = momentos_picos2[1]
+                                                t_gyro_v_pico_giro3m_ciclo_2 = momentos_picos2[0]
 
                                             y3 = v_gyro[start_gyro3:start_gyro4-offset_gyro3]
                                             indices, propriedades = find_peaks(y3)
@@ -1033,6 +1048,13 @@ with col1:
                                             maiores_picos3 = v_gyro[indices][picos_ordenados]
                                             momentos_picos3 = time_interpolated_gyro[indices][picos_ordenados]
 
+                                            if momentos_picos3[0] > momentos_picos3[1]:
+                                                t_gyro_v_pico_giro3m_ciclo_3 = momentos_picos3[1]
+                                                t_gyro_v_pico_giro6m_ciclo_3 = momentos_picos3[0]
+                                            else:
+                                                t_gyro_v_pico_giro6m_ciclo_3 = momentos_picos3[1]
+                                                t_gyro_v_pico_giro3m_ciclo_3 = momentos_picos3[0]
+
                                             y4 = v_gyro[start_gyro4:offset_gyro4]
                                             indices, propriedades = find_peaks(y4)
                                             indices = indices + start_gyro4
@@ -1041,6 +1063,13 @@ with col1:
                                             # Extrair valores e momentos
                                             maiores_picos4 = v_gyro[indices][picos_ordenados]
                                             momentos_picos4 = time_interpolated_gyro[indices][picos_ordenados]
+                                            
+                                            if momentos_picos4[0] > momentos_picos4[1]:
+                                                t_gyro_v_pico_giro3m_ciclo_4 = momentos_picos4[1]
+                                                t_gyro_v_pico_giro6m_ciclo_4 = momentos_picos4[0]
+                                            else:
+                                                t_gyro_v_pico_giro6m_ciclo_4 = momentos_picos4[1]
+                                                t_gyro_v_pico_giro3m_ciclo_4 = momentos_picos4[0]
                                             
                                             fig, ax = plt.subplots(
                                             figsize=(10, 4))
@@ -1595,7 +1624,22 @@ with col1:
                                                 ("Momento de pico de velocidade angular ML durante o levantar do ciclo 3 Giroscópio",   _safe_val(t_gyro_ml_pico_levantar_ciclo_3)),
                                                 ("Momento de pico de velocidade angular ML durante o levantar do ciclo 4 Giroscópio",   _safe_val(t_gyro_ml_pico_levantar_ciclo_4)),
 
-                                                                                             
+                                                ("Momento de pico de velocidade angular ML durante o sentar do ciclo 1 Giroscópio",   _safe_val(t_gyro_ml_pico_sentar_ciclo_1)),
+                                                ("Momento de pico de velocidade angular ML durante o sentar do ciclo 2 Giroscópio",   _safe_val(t_gyro_ml_pico_sentar_ciclo_2)),
+                                                ("Momento de pico de velocidade angular ML durante o sentar do ciclo 3 Giroscópio",   _safe_val(t_gyro_ml_pico_sentar_ciclo_3)),
+                                                ("Momento de pico de velocidade angular ML durante o sentar do ciclo 4 Giroscópio",   _safe_val(t_gyro_ml_pico_sentar_ciclo_4)),
+
+                                                ("Momento de pico de velocidade angular V durante o giro em 3 m do ciclo 1 Giroscópio",   _safe_val(t_gyro_v_pico_giro3m_ciclo_1)),
+                                                ("Momento de pico de velocidade angular V durante o giro em 3 m do ciclo 2 Giroscópio",   _safe_val(t_gyro_v_pico_giro3m_ciclo_2)),
+                                                ("Momento de pico de velocidade angular V durante o giro em 3 m do ciclo 3 Giroscópio",   _safe_val(t_gyro_v_pico_giro3m_ciclo_3)),
+                                                ("Momento de pico de velocidade angular V durante o giro em 3 m do ciclo 4 Giroscópio",   _safe_val(t_gyro_v_pico_giro3m_ciclo_4)),
+
+                                                ("Momento de pico de velocidade angular V durante o giro em 6 m do ciclo 1 Giroscópio",   _safe_val(t_gyro_v_pico_giro6m_ciclo_1)),
+                                                ("Momento de pico de velocidade angular V durante o giro em 6 m do ciclo 2 Giroscópio",   _safe_val(t_gyro_v_pico_giro6m_ciclo_2)),
+                                                ("Momento de pico de velocidade angular V durante o giro em 6 m do ciclo 3 Giroscópio",   _safe_val(t_gyro_v_pico_giro6m_ciclo_3)),
+                                                ("Momento de pico de velocidade angular V durante o giro em 6 m do ciclo 4 Giroscópio",   _safe_val(t_gyro_v_pico_giro6m_ciclo_4)),
+
+                                                
                                                 
                                             ]
                                             
@@ -1619,6 +1663,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
