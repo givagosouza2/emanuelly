@@ -604,6 +604,13 @@ with col1:
                                             maiores_picosv_acc = v_acc[indices][picos_ordenados]
                                             momentos_picosv_acc = time_interpolated[indices][picos_ordenados]
 
+                                            if momentos_picosv_acc[0] > momentos_picosv_acc[1]:
+                                                t_acc_v_pico_levantar_ciclo_1 = momentos_picosv_acc[1]
+                                                t_acc_v_pico_sentar_ciclo_1 = momentos_picosv_acc[0]
+                                            else:
+                                                t_acc_v_pico_sentar_ciclo_1 = momentos_picosv_acc[1]
+                                                t_acc_v_pico_levantar_ciclo_1 = momentos_picosv_acc[0]
+
                                             y2 = v_acc[start_gyro2:start_gyro3-offset_gyro2]
                                             indices, propriedades = find_peaks(y2)
                                             indices = indices + start_gyro2
@@ -612,6 +619,13 @@ with col1:
                                             # Extrair valores e momentos
                                             maiores_picos2v_acc = v_acc[indices][picos_ordenados]
                                             momentos_picos2v_acc = time_interpolated[indices][picos_ordenados]
+
+                                            if momentos_picos2v_acc[0] > momentos_picos2v_acc[1]:
+                                                t_acc_v_pico_levantar_ciclo_2 = momentos_picos2v_acc[1]
+                                                t_acc_v_pico_sentar_ciclo_2 = momentos_picos2v_acc[0]
+                                            else:
+                                                t_acc_v_pico_sentar_ciclo_2 = momentos_picos2v_acc[1]
+                                                t_acc_v_pico_levantar_ciclo_2 = momentos_picos2v_acc[0]
 
                                             y3 = v_acc[start_gyro3:start_gyro4-offset_gyro3]
                                             indices, propriedades = find_peaks(y3)
@@ -622,6 +636,13 @@ with col1:
                                             maiores_picos3v_acc = v_acc[indices][picos_ordenados]
                                             momentos_picos3v_acc = time_interpolated[indices][picos_ordenados]
 
+                                            if momentos_picos3v_acc[0] > momentos_picos3v_acc[1]:
+                                                t_acc_v_pico_levantar_ciclo_3 = momentos_picos3v_acc[1]
+                                                t_acc_v_pico_sentar_ciclo_3 = momentos_picos3v_acc[0]
+                                            else:
+                                                t_acc_v_pico_sentar_ciclo_3 = momentos_picos3v_acc[1]
+                                                t_acc_v_pico_levantar_ciclo_3 = momentos_picos3v_acc[0]
+                                                
                                             y4 = v_acc[start_gyro4:offset_gyro4]
                                             indices, propriedades = find_peaks(y4)
                                             indices = indices + start_gyro4
@@ -630,6 +651,13 @@ with col1:
                                             # Extrair valores e momentos
                                             maiores_picos4v_acc = v_acc[indices][picos_ordenados]
                                             momentos_picos4v_acc = time_interpolated[indices][picos_ordenados]
+
+                                            if momentos_picos4v_acc[0] > momentos_picos4v_acc[1]:
+                                                t_acc_v_pico_levantar_ciclo_4 = momentos_picos4v_acc[1]
+                                                t_acc_v_pico_sentar_ciclo_4 = momentos_picos4v_acc[0]
+                                            else:
+                                                t_acc_v_pico_sentar_ciclo_4 = momentos_picos2v_acc[1]
+                                                t_acc_v_pico_levantar_ciclo_4 = momentos_picos2v_acc[0]
                                             
                                             fig, ax = plt.subplots(
                                                 figsize=(10, 4))
@@ -801,6 +829,13 @@ with col1:
                                             # Extrair valores e momentos
                                             maiores_picosml = ml_gyro[indices][picos_ordenados]
                                             momentos_picosml = time_interpolated_gyro[indices][picos_ordenados]
+                                            
+                                            if momentos_picosml[0] > momentos_picosml[1]:
+                                                t_gyro_ml_pico_levantar_ciclo_1 = momentos_picosml[1]
+                                                t_gyro_ml_pico_sentar_ciclo_1 = momentos_picosml[0]
+                                            else:
+                                                t_gyro_ml_pico_sentar_ciclo_1 = momentos_picosml[1]
+                                                t_gyro_ml_pico_levantar_ciclo_1 = momentos_picosml[0]
 
                                             y2 = ml_gyro[start_gyro2:start_gyro3-offset_gyro2]
                                             indices, propriedades = find_peaks(y2)
@@ -811,6 +846,13 @@ with col1:
                                             maiores_picos2ml = ml_gyro[indices][picos_ordenados]
                                             momentos_picos2ml = time_interpolated_gyro[indices][picos_ordenados]
 
+                                            if momentos_picos2ml[0] > momentos_picos2ml[1]:
+                                                t_gyro_ml_pico_levantar_ciclo_2 = momentos_picos2ml[1]
+                                                t_gyro_ml_pico_sentar_ciclo_2 = momentos_picos2ml[0]
+                                            else:
+                                                t_gyro_ml_pico_sentar_ciclo_2 = momentos_picos2ml[1]
+                                                t_gyro_ml_pico_levantar_ciclo_2 = momentos_picos2ml[0]
+
                                             y3 = ml_gyro[start_gyro3:start_gyro4-offset_gyro3]
                                             indices, propriedades = find_peaks(y3)
                                             indices = indices + start_gyro3
@@ -820,6 +862,14 @@ with col1:
                                             maiores_picos3ml = ml_gyro[indices][picos_ordenados]
                                             momentos_picos3ml = time_interpolated_gyro[indices][picos_ordenados]
 
+                                            if momentos_picos3ml[0] > momentos_picos3ml[1]:
+                                                t_gyro_ml_pico_levantar_ciclo_3 = momentos_picos3ml[1]
+                                                t_gyro_ml_pico_sentar_ciclo_3 = momentos_picos3ml[0]
+                                            else:
+                                                t_gyro_ml_pico_sentar_ciclo_3 = momentos_picos3ml[1]
+                                                t_gyro_ml_pico_levantar_ciclo_3 = momentos_picos3ml[0]
+
+
                                             y4 = ml_gyro[start_gyro4:offset_gyro4]
                                             indices, propriedades = find_peaks(y4)
                                             indices = indices + start_gyro4
@@ -828,6 +878,14 @@ with col1:
                                             # Extrair valores e momentos
                                             maiores_picos4ml = ml_gyro[indices][picos_ordenados]
                                             momentos_picos4ml = time_interpolated_gyro[indices][picos_ordenados]
+
+                                            if momentos_picos4ml[0] > momentos_picos4ml[1]:
+                                                t_gyro_ml_pico_levantar_ciclo_4 = momentos_picos4ml[1]
+                                                t_gyro_ml_pico_sentar_ciclo_4 = momentos_picos4ml[0]
+                                            else:
+                                                t_gyro_ml_pico_sentar_ciclo_4 = momentos_picos4ml[1]
+                                                t_gyro_ml_pico_levantar_ciclo_4 = momentos_picos4ml[0]
+
                                                 
                                             fig, ax = plt.subplots(
                                             figsize=(10, 4))
@@ -1512,17 +1570,32 @@ with col1:
                                                 ("Momento final do levantar do ciclo 4 Cinemática", _safe_val(standing_time[3]) if 'standing_time' in locals() and len(standing_time) > 0 else None),
                                                 ("Momento inicial do sentar do ciclo 4 Cinemática",  _safe_val(sitting_time[3])  if 'sitting_time'  in locals() and len(sitting_time)  > 0 else None),
 
-                                                ("Momento de pico de aceleração AP durante o levantar do ciclo 1 Acelerômetro",   _safe_val(t_acc_ap_pico_sentar_ciclo_1)),
-                                                ("Momento de pico de aceleração AP durante o levantar do ciclo 2 Acelerômetro",   _safe_val(t_acc_ap_pico_sentar_ciclo_2)),
-                                                ("Momento de pico de aceleração AP durante o levantar do ciclo 3 Acelerômetro",   _safe_val(t_acc_ap_pico_sentar_ciclo_3)),
-                                                ("Momento de pico de aceleração AP durante o levantar do ciclo 4 Acelerômetro",   _safe_val(t_acc_ap_pico_sentar_ciclo_4)),
+                                                ("Momento de pico de aceleração AP durante o levantar do ciclo 1 Acelerômetro",   _safe_val(t_acc_ap_pico_levantar_ciclo_1)),
+                                                ("Momento de pico de aceleração AP durante o levantar do ciclo 2 Acelerômetro",   _safe_val(t_acc_ap_pico_levantar_ciclo_2)),
+                                                ("Momento de pico de aceleração AP durante o levantar do ciclo 3 Acelerômetro",   _safe_val(t_acc_ap_pico_levantar_ciclo_3)),
+                                                ("Momento de pico de aceleração AP durante o levantar do ciclo 4 Acelerômetro",   _safe_val(t_acc_ap_pico_levantar_ciclo_4)),
                                                 
-                                                ("Momento de pico de aceleração AP durante o sentar do ciclo 1 Acelerômetro",   _safe_val(t_acc_ap_pico_levantar_ciclo_1)),
-                                                ("Momento de pico de aceleração AP durante o sentar do ciclo 2 Acelerômetro",   _safe_val(t_acc_ap_pico_levantar_ciclo_2)),
-                                                ("Momento de pico de aceleração AP durante o sentar do ciclo 3 Acelerômetro",   _safe_val(t_acc_ap_pico_levantar_ciclo_3)),
-                                                ("Momento de pico de aceleração AP durante o sentar do ciclo 4 Acelerômetro",   _safe_val(t_acc_ap_pico_levantar_ciclo_4)),
+                                                ("Momento de pico de aceleração AP durante o sentar do ciclo 1 Acelerômetro",   _safe_val(t_acc_ap_pico_sentar_ciclo_1)),
+                                                ("Momento de pico de aceleração AP durante o sentar do ciclo 2 Acelerômetro",   _safe_val(t_acc_ap_pico_sentar_ciclo_2)),
+                                                ("Momento de pico de aceleração AP durante o sentar do ciclo 3 Acelerômetro",   _safe_val(t_acc_ap_pico_sentar_ciclo_3)),
+                                                ("Momento de pico de aceleração AP durante o sentar do ciclo 4 Acelerômetro",   _safe_val(t_acc_ap_pico_sentar_ciclo_4)),
                                                 
-                                            
+                                                ("Momento de pico de aceleração V durante o levantar do ciclo 1 Acelerômetro",   _safe_val(t_acc_v_pico_levantar_ciclo_1)),
+                                                ("Momento de pico de aceleração V durante o levantar do ciclo 2 Acelerômetro",   _safe_val(t_acc_v_pico_levantar_ciclo_2)),
+                                                ("Momento de pico de aceleração V durante o levantar do ciclo 3 Acelerômetro",   _safe_val(t_acc_v_pico_levantar_ciclo_3)),
+                                                ("Momento de pico de aceleração V durante o levantar do ciclo 4 Acelerômetro",   _safe_val(t_acc_v_pico_levantar_ciclo_4)),
+
+                                                ("Momento de pico de aceleração V durante o sentar do ciclo 1 Acelerômetro",   _safe_val(t_acc_v_pico_sentar_ciclo_1)),
+                                                ("Momento de pico de aceleração V durante o sentar do ciclo 2 Acelerômetro",   _safe_val(t_acc_v_pico_sentar_ciclo_2)),
+                                                ("Momento de pico de aceleração V durante o sentar do ciclo 3 Acelerômetro",   _safe_val(t_acc_v_pico_sentar_ciclo_3)),
+                                                ("Momento de pico de aceleração V durante o sentar do ciclo 4 Acelerômetro",   _safe_val(t_acc_v_pico_sentar_ciclo_4)),
+
+                                                ("Momento de pico de velocidade angular ML durante o levantar do ciclo 1 Giroscópio",   _safe_val(t_gyro_ml_pico_levantar_ciclo_1)),
+                                                ("Momento de pico de velocidade angular ML durante o levantar do ciclo 2 Giroscópio",   _safe_val(t_gyro_ml_pico_levantar_ciclo_2)),
+                                                ("Momento de pico de velocidade angular ML durante o levantar do ciclo 3 Giroscópio",   _safe_val(t_gyro_ml_pico_levantar_ciclo_3)),
+                                                ("Momento de pico de velocidade angular ML durante o levantar do ciclo 4 Giroscópio",   _safe_val(t_gyro_ml_pico_levantar_ciclo_4)),
+
+                                                                                             
                                                 
                                             ]
                                             
@@ -1546,6 +1619,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
