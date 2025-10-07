@@ -444,7 +444,7 @@ with col1:
                                                     offset_gyro3 = start_gyro4-index-1
                                                     break
 
-                                            for index in range(len(ml_gyro) - 300, start_gyro4 + 100, -1):
+                                            for index in range(len(ml_gyro) - 600, start_gyro4 + 100, -1):
                                                 valor = ml_gyro[index]
                                                 if valor > 0.15:
                                                     offset_gyro4 = start_gyro4-index-1
@@ -1663,6 +1663,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
