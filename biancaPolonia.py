@@ -398,6 +398,7 @@ with col1:
 
                                         ax2.set_xlabel("Tempo (s)")
                                         ax2.set_ylabel("Amplitude")
+                                        ax2.set_ylim([0.5,1.5])
                                         ax2.set_xlim([5,25])
                                         st.pyplot(fig1)
                                         with col3:
@@ -1679,6 +1680,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
