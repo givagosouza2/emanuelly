@@ -1144,7 +1144,7 @@ with col1:
                                                 ax7.plot(
                                                 [momentos_picosap_acc[1],momentos_picosap_acc[1]], [-0.5,30], 'b--')
                                             
-                                                ax7.set_ylim([-0.5,5])
+                                                ax7.set_ylim([-0.5,3.5])
                                                 ax7.set_xlim([5,25])
                                                 st.pyplot(fig7)
 
@@ -1527,6 +1527,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
