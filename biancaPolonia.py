@@ -451,11 +451,11 @@ with col1:
                                                     offset_gyro4 = start_gyro4-index-1
                                                     break
                                             
-                                            fig, ax = plt.subplots(
+                                            fig3, ax3 = plt.subplots(
                                                 figsize=(10, 4))
-                                            ax.plot(
+                                            ax3.plot(
                                                 time_interpolated, acc_norm_filtered, 'k-')
-                                            ax.plot([0, 0], [0, 30], 'r--')
+                                            ax3.plot([0, 0], [0, 30], 'r--')
                                             # Verificação básica para evitar erros
                                             num_ciclos = min(
                                                 len(onsets), len(offsets))
@@ -465,33 +465,34 @@ with col1:
                                                 t_offset = time_original_kinem[offsets[i]]
 
                                                 # Linha tracejada: início
-                                                ax.axvline(t_onset, linestyle='--', color='orange',
+                                                ax3.axvline(t_onset, linestyle='--', color='orange',
                                                            label='Início da queda' if i == 0 else "")
                                                 # Linha tracejada: fim
-                                                ax.axvline(t_offset, linestyle='--', color='green',
+                                                ax3.axvline(t_offset, linestyle='--', color='green',
                                                            label='Fim da queda' if i == 0 else "")
                                                 # Faixa entre onset e offset
-                                                ax.axvspan(t_onset, t_offset, color='gray', alpha=0.3,
+                                                ax3.axvspan(t_onset, t_offset, color='gray', alpha=0.3,
                                                            label='Fase de queda' if i == 0 else "")
 
-                                                ax.axvline(standing_time[i], linestyle='--', color='red',
+                                                ax3.axvline(standing_time[i], linestyle='--', color='red',
                                                            label='Início da queda' if i == 0 else "")
-                                                ax.axvline(sitting_time[i], linestyle='--', color='black',
+                                                ax3.axvline(sitting_time[i], linestyle='--', color='black',
                                                            label='Início da queda' if i == 0 else "")
 
                                                 # Se houver um próximo ciclo, pinta o intervalo entre o offset atual e o próximo onset
-                                                if i + 1 < num_ciclos:
-                                                    t_next_onset = time_original_kinem[onsets[i+1]]
-                                                    ax.axvspan(t_offset, t_next_onset, color='lightblue',
-                                                               alpha=0.3, label='Intervalo' if i == 0 else "")
+                                                #if i + 1 < num_ciclos:
+                                                   # t_next_onset = time_original_kinem[onsets[i+1]]
+                                                   # ax.axvspan(t_offset, t_next_onset, color='lightblue',
+                                                              # alpha=0.3, label='Intervalo' if i == 0 else "")
 
                                             # Mínimos detectados
                                             for i, t in enumerate(time_original_kinem[peaks]):
                                                 ax.axvline(t, linestyle='--', color='blue',
                                                            label='Mínimo' if i == 0 else "")
-                                            ax.set_xlabel("Tempo (s)")
-                                            ax.set_ylabel("Amplitude")
-                                            st.pyplot(fig)
+                                            ax3.set_xlabel("Tempo (s)")
+                                            ax3.set_ylabel("Amplitude")
+                                            ax3.set_xlim([5,25])
+                                            st.pyplot(fig3)
 
                                             fig, ax = plt.subplots(
                                                 figsize=(10, 4))
@@ -1680,6 +1681,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
