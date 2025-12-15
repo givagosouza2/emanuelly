@@ -341,10 +341,10 @@ with col1:
                                                    label='Fase de queda' if i == 0 else "")
 
                                     # Se houver um próximo ciclo, pinta o intervalo entre o offset atual e o próximo onset
-                                        if i + 1 < num_ciclos:
-                                            t_next_onset = time_original_kinem[onsets[i+1]]
-                                            ax1.axvspan(t_offset, t_next_onset, color='lightblue',
-                                                       alpha=0.3, label='Intervalo' if i == 0 else "")
+                                        #if i + 1 < num_ciclos:
+                                            #t_next_onset = time_original_kinem[onsets[i+1]]
+                                            #ax1.axvspan(t_offset, t_next_onset, color='lightblue',
+                                                       #alpha=0.3, label='Intervalo' if i == 0 else "")
 
                                     # Mínimos detectados
                                     for i, t in enumerate(time_original_kinem[peaks]):
@@ -1679,6 +1679,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
