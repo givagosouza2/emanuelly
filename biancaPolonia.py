@@ -354,7 +354,7 @@ with col1:
                                     ax.set_xlabel("Tempo (s)")
                                     ax.set_ylabel("Amplitude")
 
-                                    st.pyplot(fig)
+                                    #st.pyplot(fig)
                                     with col2:
                                         fig, ax = plt.subplots(figsize=(10, 4))
                                         ax.plot(
@@ -1679,6 +1679,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
