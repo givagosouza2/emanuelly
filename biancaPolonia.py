@@ -491,6 +491,7 @@ with col1:
                                                            label='Mínimo' if i == 0 else "")
                                             ax3.set_xlabel("Tempo (s)")
                                             ax3.set_ylabel("Amplitude")
+                                            ax3.set_ylim([0,10])
                                             ax3.set_xlim([5,25])
                                             st.pyplot(fig3)
 
@@ -1681,6 +1682,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
