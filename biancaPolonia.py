@@ -716,6 +716,7 @@ with col1:
                                             ax.set_xlabel("Tempo (s)")
                                             ax.set_ylabel("Aceleração AP")
                                             ax.set_ylim([0,10])
+                                            ax.set_xlim([5,25])
                                             st.pyplot(fig)
 
                                             fig, ax = plt.subplots(
@@ -777,6 +778,7 @@ with col1:
                                             ax.set_xlabel("Tempo (s)")
                                             ax.set_ylabel("Aceleração V")
                                             ax.set_ylim([0,10])
+                                            ax.set_xlim([5,25])
                                             st.pyplot(fig)
 
                                             fig, ax = plt.subplots(
@@ -818,6 +820,7 @@ with col1:
                                                            label='Mínimo' if i == 0 else "")
                                             ax.set_xlabel("Tempo (s)")
                                             ax.set_ylabel("Amplitude")
+                                            ax.set_xlim([5,25])
                                             st.pyplot(fig)
 
 
@@ -961,6 +964,7 @@ with col1:
                                             ax.set_xlabel("Tempo (s)")
                                             ax.set_ylabel("Velocidade angular ML")
                                             ax.set_ylim([0,3])
+                                            ax.set_xlim([5,25])
                                             st.pyplot(fig)
 
                                             fig, ax = plt.subplots(
@@ -1004,6 +1008,7 @@ with col1:
                                             ax.set_xlabel("Tempo (s)")
                                             ax.set_ylabel("Velocidade angular AP")
                                             ax.set_ylim([0,3])
+                                            ax.set_xlim([5,25])
                                             st.pyplot(fig)
 
                                             y = v_gyro[onset_gyro+start_gyro:start_gyro2-offset_gyro]
@@ -1128,6 +1133,7 @@ with col1:
                                             ax.set_xlabel("Tempo (s)")
                                             ax.set_ylabel("Velocidade angular V")
                                             ax.set_ylim([0,5])
+                                            ax.set_xlim([5,25])
                                             st.pyplot(fig)
                                             
                                             with col1:
@@ -1220,6 +1226,7 @@ with col1:
                                                 [momentos_picos4v_acc[1],momentos_picos4v_acc[1]], [0,30], 'k--')
                                             
                                                 ax.set_ylim([-0.5,5])
+                                                ax.set_xlim([5,25])
                                                 st.pyplot(fig)
 
                                                 fig, ax = plt.subplots(figsize=(10, 4))
@@ -1251,6 +1258,7 @@ with col1:
                                                 [momentos_picosv_acc[1],momentos_picosv_acc[1]], [0,30], 'k--')
                                                 ax.set_xlim([time_interpolated_gyro[onset_gyro+start_gyro-100],time_interpolated_gyro[start_gyro2-offset_gyro+100]])
                                                 ax.set_ylim([-0.5,5])
+                                                ax.set_xlim([5,25])
                                                 st.pyplot(fig)
 
                                                 fig, ax = plt.subplots(figsize=(10, 4))
@@ -1282,6 +1290,7 @@ with col1:
                                                 [momentos_picos2v_acc[1],momentos_picos2v_acc[1]], [0,30], 'k--')
                                                 ax.set_xlim([time_interpolated_gyro[onset_gyro+start_gyro2-100],time_interpolated_gyro[start_gyro3-offset_gyro2+100]])
                                                 ax.set_ylim([-0.5,5])
+                                                ax.set_xlim([5,25])
                                                 st.pyplot(fig)
 
                                                 fig, ax = plt.subplots(figsize=(10, 4))
@@ -1313,6 +1322,7 @@ with col1:
                                                 [momentos_picos3v_acc[1],momentos_picos3v_acc[1]], [0,30], 'k--')
                                                 ax.set_xlim([time_interpolated_gyro[onset_gyro+start_gyro3-100],time_interpolated_gyro[start_gyro4-offset_gyro3+100]])
                                                 ax.set_ylim([-0.5,5])
+                                                ax.set_xlim([5,25])
                                                 st.pyplot(fig)
 
                                                 fig, ax = plt.subplots(figsize=(10, 4))
@@ -1344,6 +1354,7 @@ with col1:
                                                 [momentos_picos4v_acc[1],momentos_picos4v_acc[1]], [0,30], 'k--')
                                                 ax.set_xlim([time_interpolated_gyro[onset_gyro+start_gyro4-100],time_interpolated_gyro[offset_gyro4+100]])
                                                 ax.set_ylim([-0.5,5])
+                                                ax.set_xlim([5,25])
                                                 st.pyplot(fig)
                                                 
                                             with col2:
@@ -1437,6 +1448,7 @@ with col1:
                                                 ax.plot(
                                                 [momentos_picos4v_acc[1],momentos_picos4v_acc[1]], [0,30], 'k--')
                                                 ax.set_ylim([0,2])
+                                                ax.set_xlim([5,25])
                                                 st.pyplot(fig)
 
                                                 fig, ax = plt.subplots(figsize=(10, 4))
@@ -1468,6 +1480,7 @@ with col1:
                                                 [momentos_picosv_acc[1],momentos_picosv_acc[1]], [0,30], 'k--')
                                                 ax.set_xlim([time_interpolated_gyro[onset_gyro+start_gyro-100],time_interpolated_gyro[start_gyro2-offset_gyro+100]])
                                                 ax.set_ylim([0.6,1.2])
+                                                ax.set_xlim([5,25])
                                                 st.pyplot(fig)
 
                                                 fig, ax = plt.subplots(figsize=(10, 4))
@@ -1499,6 +1512,7 @@ with col1:
                                                 [momentos_picos2v_acc[1],momentos_picos2v_acc[1]], [0,30], 'k--')
                                                 ax.set_xlim([time_interpolated_gyro[onset_gyro+start_gyro2-100],time_interpolated_gyro[start_gyro3-offset_gyro2+100]])
                                                 ax.set_ylim([0.6,1.2])
+                                                ax.set_xlim([5,25])
                                                 st.pyplot(fig)
 
                                                 fig, ax = plt.subplots(figsize=(10, 4))
@@ -1530,6 +1544,7 @@ with col1:
                                                 [momentos_picos3v_acc[1],momentos_picos3v_acc[1]], [0,30], 'k--')
                                                 ax.set_xlim([time_interpolated_gyro[onset_gyro+start_gyro3-100],time_interpolated_gyro[start_gyro4-offset_gyro3+100]])
                                                 ax.set_ylim([0.6,1.2])
+                                                ax.set_xlim([5,25])
                                                 st.pyplot(fig)
 
                                                 fig, ax = plt.subplots(figsize=(10, 4))
@@ -1561,6 +1576,7 @@ with col1:
                                                 [momentos_picos4v_acc[1],momentos_picos4v_acc[1]], [0,30], 'k--')
                                                 ax.set_xlim([time_interpolated_gyro[onset_gyro+start_gyro4-100],time_interpolated_gyro[offset_gyro4+100]])
                                                 ax.set_ylim([0.6,1.2])
+                                                ax.set_xlim([5,25])
                                                 st.pyplot(fig)
                                                 
                                             st.markdown("---")
@@ -1663,6 +1679,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
