@@ -827,13 +827,13 @@ with col1:
                                             st.pyplot(fig4)
 
 
-                                            y = ml_gyro[onset_gyro+start_gyro:start_gyro2-offset_gyro]
+                                            y = gyro_norm_filtered[onset_gyro+start_gyro:start_gyro2-offset_gyro]
                                             indices, propriedades = find_peaks(y)
                                             indices = indices + start_gyro + onset_gyro
                                             # Ordenar picos por altura
-                                            picos_ordenados = np.argsort(ml_gyro[indices])[-2:]  # dois maiores picos
+                                            picos_ordenados = np.argsort(gyro_norm_filtered[indices])[-2:]  # dois maiores picos
                                             # Extrair valores e momentos
-                                            maiores_picosml = ml_gyro[indices][picos_ordenados]
+                                            maiores_picosml = gyro_norm_filtered[indices][picos_ordenados]
                                             momentos_picosml = time_interpolated_gyro[indices][picos_ordenados]
                                             
                                             if momentos_picosml[0] > momentos_picosml[1]:
@@ -843,13 +843,13 @@ with col1:
                                                 t_gyro_ml_pico_sentar_ciclo_1 = momentos_picosml[1]
                                                 t_gyro_ml_pico_levantar_ciclo_1 = momentos_picosml[0]
 
-                                            y2 = ml_gyro[start_gyro2:start_gyro3-offset_gyro2]
+                                            y2 = gyro_norm_filtered[start_gyro2:start_gyro3-offset_gyro2]
                                             indices, propriedades = find_peaks(y2)
                                             indices = indices + start_gyro2
                                             # Ordenar picos por altura
-                                            picos_ordenados = np.argsort(ml_gyro[indices])[-2:]  # dois maiores picos
+                                            picos_ordenados = np.argsort(gyro_norm_filtered[indices])[-2:]  # dois maiores picos
                                             # Extrair valores e momentos
-                                            maiores_picos2ml = ml_gyro[indices][picos_ordenados]
+                                            maiores_picos2ml = gyro_norm_filtered[indices][picos_ordenados]
                                             momentos_picos2ml = time_interpolated_gyro[indices][picos_ordenados]
 
                                             if momentos_picos2ml[0] > momentos_picos2ml[1]:
@@ -859,13 +859,13 @@ with col1:
                                                 t_gyro_ml_pico_sentar_ciclo_2 = momentos_picos2ml[1]
                                                 t_gyro_ml_pico_levantar_ciclo_2 = momentos_picos2ml[0]
 
-                                            y3 = ml_gyro[start_gyro3:start_gyro4-offset_gyro3]
+                                            y3 = gyro_norm_filtered[start_gyro3:start_gyro4-offset_gyro3]
                                             indices, propriedades = find_peaks(y3)
                                             indices = indices + start_gyro3
                                             # Ordenar picos por altura
-                                            picos_ordenados = np.argsort(ml_gyro[indices])[-2:]  # dois maiores picos
+                                            picos_ordenados = np.argsort(gyro_norm_filtered[indices])[-2:]  # dois maiores picos
                                             # Extrair valores e momentos
-                                            maiores_picos3ml = ml_gyro[indices][picos_ordenados]
+                                            maiores_picos3ml = gyro_norm_filtered[indices][picos_ordenados]
                                             momentos_picos3ml = time_interpolated_gyro[indices][picos_ordenados]
 
                                             if momentos_picos3ml[0] > momentos_picos3ml[1]:
@@ -876,13 +876,13 @@ with col1:
                                                 t_gyro_ml_pico_levantar_ciclo_3 = momentos_picos3ml[0]
 
 
-                                            y4 = ml_gyro[start_gyro4:offset_gyro4]
+                                            y4 = gyro_norm_filtered[start_gyro4:offset_gyro4]
                                             indices, propriedades = find_peaks(y4)
                                             indices = indices + start_gyro4
                                             # Ordenar picos por altura
-                                            picos_ordenados = np.argsort(ml_gyro[indices])[-2:]  # dois maiores picos
+                                            picos_ordenados = np.argsort(gyro_norm_filtered[indices])[-2:]  # dois maiores picos
                                             # Extrair valores e momentos
-                                            maiores_picos4ml = ml_gyro[indices][picos_ordenados]
+                                            maiores_picos4ml = gyro_norm_filtered[indices][picos_ordenados]
                                             momentos_picos4ml = time_interpolated_gyro[indices][picos_ordenados]
 
                                             if momentos_picos4ml[0] > momentos_picos4ml[1]:
@@ -893,82 +893,82 @@ with col1:
                                                 t_gyro_ml_pico_levantar_ciclo_4 = momentos_picos4ml[0]
 
                                                 
-                                            fig, ax = plt.subplots(
+                                            fig5, ax5 = plt.subplots(
                                             figsize=(10, 4))
-                                            ax.plot(
-                                                time_interpolated_gyro, ml_gyro, 'k-')
-                                            ax.plot(
+                                            ax5.plot(
+                                                time_interpolated_gyro, gyro_norm_filtered, 'k-')
+                                            ax5.plot(
                                                 [time_interpolated_gyro[onset_gyro+start_gyro],time_interpolated_gyro[onset_gyro+start_gyro]], [0,30], 'y--')
-                                            ax.plot(
+                                            ax5.plot(
                                                 [time_interpolated_gyro[start_gyro2-offset_gyro],time_interpolated_gyro[start_gyro2-offset_gyro]], [0,30], 'y--')
-                                            ax.plot(
+                                            ax5.plot(
                                                 [time_interpolated_gyro[onset_gyro+start_gyro2],time_interpolated_gyro[onset_gyro+start_gyro2]], [0,30], 'y--')
-                                            ax.plot(
+                                            ax5.plot(
                                                 [time_interpolated_gyro[start_gyro3-offset_gyro2],time_interpolated_gyro[start_gyro3-offset_gyro2]], [0,30], 'y--')
-                                            ax.plot(
+                                            ax5.plot(
                                                 [time_interpolated_gyro[onset_gyro+start_gyro3],time_interpolated_gyro[onset_gyro+start_gyro3]], [0,30], 'y--')
-                                            ax.plot(
+                                            ax5.plot(
                                                 [time_interpolated_gyro[start_gyro4-offset_gyro3],time_interpolated_gyro[start_gyro4-offset_gyro3]], [0,30], 'y--')
-                                            ax.plot(
+                                            ax5.plot(
                                                 [time_interpolated_gyro[onset_gyro+start_gyro4],time_interpolated_gyro[onset_gyro+start_gyro4]], [0,30], 'y--')
-                                            ax.plot(
+                                            ax5.plot(
                                                 [time_interpolated_gyro[start_gyro4-offset_gyro4],time_interpolated_gyro[start_gyro4-offset_gyro4]], [0,30], 'y--')
 
-                                            ax.plot(
+                                            ax5.plot(
                                                 [momentos_picosml[0],momentos_picosml[0]], [0,30], 'r--')
-                                            ax.plot(
+                                            ax5.plot(
                                                 [momentos_picosml[1],momentos_picosml[1]], [0,30], 'r--')
-                                            ax.plot(
+                                            ax5.plot(
                                                 [momentos_picos2ml[0],momentos_picos2ml[0]], [0,30], 'r--')
-                                            ax.plot(
+                                            ax5.plot(
                                                 [momentos_picos2ml[1],momentos_picos2ml[1]], [0,30], 'r--')
-                                            ax.plot(
+                                            ax5.plot(
                                                 [momentos_picos3ml[0],momentos_picos3ml[0]], [0,30], 'r--')
-                                            ax.plot(
+                                            ax5.plot(
                                                 [momentos_picos3ml[1],momentos_picos3ml[1]], [0,30], 'r--')
-                                            ax.plot(
+                                            ax5.plot(
                                                 [momentos_picos4ml[0],momentos_picos4ml[0]], [0,30], 'r--')
-                                            ax.plot(
+                                            ax5.plot(
                                                 [momentos_picos4ml[1],momentos_picos4ml[1]], [0,30], 'r--')
                                             
-                                            ax.plot(
-                                                [time_original_kinem[onsets[0]],time_original_kinem[onsets[0]]], [0,30], 'b-',linewidth=largura)
-                                            ax.plot(
-                                                [time_original_kinem[offsets[0]],time_original_kinem[offsets[0]]], [0,30], 'b-',linewidth=largura)
-                                            ax.plot(
-                                                [time_original_kinem[onsets[1]],time_original_kinem[onsets[1]]], [0,30], 'b-',linewidth=largura)
-                                            ax.plot(
-                                                [time_original_kinem[offsets[1]],time_original_kinem[offsets[1]]], [0,30], 'b-',linewidth=largura)
-                                            ax.plot(
-                                                [time_original_kinem[onsets[2]],time_original_kinem[onsets[2]]], [0,30], 'b-',linewidth=largura)
-                                            ax.plot(
-                                                [time_original_kinem[offsets[2]],time_original_kinem[offsets[2]]], [0,30], 'b-',linewidth=largura)
-                                            ax.plot(
-                                                [time_original_kinem[onsets[3]],time_original_kinem[onsets[3]]], [0,30], 'b-',linewidth=largura)
-                                            ax.plot(
-                                                [time_original_kinem[offsets[3]],time_original_kinem[offsets[3]]], [0,30], 'b-',linewidth=largura)
+                                            #ax.plot(
+                                                #[time_original_kinem[onsets[0]],time_original_kinem[onsets[0]]], [0,30], 'b-',linewidth=largura)
+                                            #ax.plot(
+                                            #    [time_original_kinem[offsets[0]],time_original_kinem[offsets[0]]], [0,30], 'b-',linewidth=largura)
+                                            #ax.plot(
+                                             #   [time_original_kinem[onsets[1]],time_original_kinem[onsets[1]]], [0,30], 'b-',linewidth=largura)
+                                            #ax.plot(
+                                            #    [time_original_kinem[offsets[1]],time_original_kinem[offsets[1]]], [0,30], 'b-',linewidth=largura)
+                                            #ax.plot(
+                                            #    [time_original_kinem[onsets[2]],time_original_kinem[onsets[2]]], [0,30], 'b-',linewidth=largura)
+                                            #ax.plot(
+                                            #    [time_original_kinem[offsets[2]],time_original_kinem[offsets[2]]], [0,30], 'b-',linewidth=largura)
+                                            #ax.plot(
+                                            #    [time_original_kinem[onsets[3]],time_original_kinem[onsets[3]]], [0,30], 'b-',linewidth=largura)
+                                            #ax.plot(
+                                            #    [time_original_kinem[offsets[3]],time_original_kinem[offsets[3]]], [0,30], 'b-',linewidth=largura)
 
-                                            ax.plot([standing_time[0],standing_time[0]], [0,30], 'r-',linewidth=largura)
-                                            ax.plot([standing_time[1],standing_time[1]], [0,30], 'r-',linewidth=largura)
-                                            ax.plot([standing_time[2],standing_time[2]], [0,30], 'r-',linewidth=largura)
-                                            ax.plot([standing_time[3],standing_time[3]], [0,30], 'r-',linewidth=largura)
+                                            #ax.plot([standing_time[0],standing_time[0]], [0,30], 'r-',linewidth=largura)
+                                            #ax.plot([standing_time[1],standing_time[1]], [0,30], 'r-',linewidth=largura)
+                                            #ax.plot([standing_time[2],standing_time[2]], [0,30], 'r-',linewidth=largura)
+                                            #ax.plot([standing_time[3],standing_time[3]], [0,30], 'r-',linewidth=largura)
 
-                                            ax.plot([sitting_time[0],sitting_time[0]], [0,30], 'r-',linewidth=largura)
-                                            ax.plot([sitting_time[1],sitting_time[1]], [0,30], 'r-',linewidth=largura)
-                                            ax.plot([sitting_time[2],sitting_time[2]], [0,30], 'r-',linewidth=largura)
-                                            ax.plot([sitting_time[3],sitting_time[3]], [0,30], 'r-',linewidth=largura)
+                                            #ax.plot([sitting_time[0],sitting_time[0]], [0,30], 'r-',linewidth=largura)
+                                            #ax.plot([sitting_time[1],sitting_time[1]], [0,30], 'r-',linewidth=largura)
+                                            #ax.plot([sitting_time[2],sitting_time[2]], [0,30], 'r-',linewidth=largura)
+                                            #ax.plot([sitting_time[3],sitting_time[3]], [0,30], 'r-',linewidth=largura)
 
-                                            ax.plot([time_original_kinem[peaks[0]],time_original_kinem[peaks[0]]], [0,30], 'k-',linewidth=largura)
-                                            ax.plot([time_original_kinem[peaks[1]],time_original_kinem[peaks[1]]], [0,30], 'k-',linewidth=largura)
-                                            ax.plot([time_original_kinem[peaks[2]],time_original_kinem[peaks[2]]], [0,30], 'k-',linewidth=largura)
-                                            ax.plot([time_original_kinem[peaks[3]],time_original_kinem[peaks[3]]], [0,30], 'k-',linewidth=largura)
+                                            #ax.plot([time_original_kinem[peaks[0]],time_original_kinem[peaks[0]]], [0,30], 'k-',linewidth=largura)
+                                            #ax.plot([time_original_kinem[peaks[1]],time_original_kinem[peaks[1]]], [0,30], 'k-',linewidth=largura)
+                                            #ax.plot([time_original_kinem[peaks[2]],time_original_kinem[peaks[2]]], [0,30], 'k-',linewidth=largura)
+                                            #ax.plot([time_original_kinem[peaks[3]],time_original_kinem[peaks[3]]], [0,30], 'k-',linewidth=largura)
                                             
-                                            ax.plot([0, 0], [0, 30], 'r--')
-                                            ax.set_xlabel("Tempo (s)")
-                                            ax.set_ylabel("Velocidade angular ML")
-                                            ax.set_ylim([0,3])
-                                            ax.set_xlim([5,25])
-                                            st.pyplot(fig)
+                                            ax5.plot([0, 0], [0, 30], 'r--')
+                                            ax5.set_xlabel("Tempo (s)")
+                                            ax5.set_ylabel("Velocidade angular ML")
+                                            ax5.set_ylim([0,3])
+                                            ax5.set_xlim([5,25])
+                                            st.pyplot(fig5)
 
                                             fig, ax = plt.subplots(
                                                 figsize=(10, 4))
@@ -1682,6 +1682,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
