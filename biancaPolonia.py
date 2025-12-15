@@ -487,7 +487,7 @@ with col1:
 
                                             # Mínimos detectados
                                             for i, t in enumerate(time_original_kinem[peaks]):
-                                                ax.axvline(t, linestyle='--', color='blue',
+                                                ax3.axvline(t, linestyle='--', color='blue',
                                                            label='Mínimo' if i == 0 else "")
                                             ax3.set_xlabel("Tempo (s)")
                                             ax3.set_ylabel("Amplitude")
@@ -1682,6 +1682,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
