@@ -1176,7 +1176,7 @@ with col1:
                                                 ax.plot(
                                                 [momentos_picosv_acc[1],momentos_picosv_acc[1]], [0,30], 'k--')
                                                 ax.set_xlim([time_interpolated_gyro[onset_gyro+start_gyro-100],time_interpolated_gyro[start_gyro2-offset_gyro+100]])
-                                                ax.set_ylim([-0.5,5])
+                                                ax.set_ylim([-0.5,3.5])
                                                 ax.set_xlim([5,25])
                                                 st.pyplot(fig)
 
@@ -1527,6 +1527,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
