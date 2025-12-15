@@ -538,13 +538,13 @@ with col1:
                                             ax.set_ylim([0,10])
                                             st.pyplot(fig)
 
-                                            y = ap_acc[onset_gyro+start_gyro:start_gyro2-offset_gyro]
+                                            y = acc_norm_filtered[onset_gyro+start_gyro:start_gyro2-offset_gyro]
                                             indices, propriedades = find_peaks(y)
                                             indices = indices + start_gyro + onset_gyro
                                             # Ordenar picos por altura
-                                            picos_ordenados = np.argsort(ap_acc[indices])[-2:]  # dois maiores picos
+                                            picos_ordenados = np.argsort(acc_norm_filtered[indices])[-2:]  # dois maiores picos
                                             # Extrair valores e momentos
-                                            maiores_picosap_acc = ap_acc[indices][picos_ordenados]
+                                            maiores_picosap_acc = acc_norm_filtered[indices][picos_ordenados]
                                             momentos_picosap_acc = time_interpolated[indices][picos_ordenados]
                                             if momentos_picosap_acc[0] > momentos_picosap_acc[1]:
                                                 t_acc_ap_pico_levantar_ciclo_1 = momentos_picosap_acc[1]
@@ -553,13 +553,13 @@ with col1:
                                                 t_acc_ap_pico_sentar_ciclo_1 = momentos_picosap_acc[1]
                                                 t_acc_ap_pico_levantar_ciclo_1 = momentos_picosap_acc[0]
                                                 
-                                            y2 = ap_acc[start_gyro2:start_gyro3-offset_gyro2]
+                                            y2 = acc_norm_filtered[start_gyro2:start_gyro3-offset_gyro2]
                                             indices, propriedades = find_peaks(y2)
                                             indices = indices + start_gyro2
                                             # Ordenar picos por altura
                                             picos_ordenados = np.argsort(ap_acc[indices])[-2:]  # dois maiores picos
                                             # Extrair valores e momentos
-                                            maiores_picos2ap_acc = ap_acc[indices][picos_ordenados]
+                                            maiores_picos2ap_acc = acc_norm_filtered[indices][picos_ordenados]
                                             momentos_picos2ap_acc = time_interpolated[indices][picos_ordenados]
                                             if momentos_picos2ap_acc[0] > momentos_picos2ap_acc[1]:
                                                 t_acc_ap_pico_levantar_ciclo_2 = momentos_picos2ap_acc[1]
@@ -568,13 +568,13 @@ with col1:
                                                 t_acc_ap_pico_sentar_ciclo_2 = momentos_picos2ap_acc[1]
                                                 t_acc_ap_pico_levantar_ciclo_2 = momentos_picos2ap_acc[0]
 
-                                            y3 = ap_acc[start_gyro3:start_gyro4-offset_gyro3]
+                                            y3 = acc_norm_filtered[start_gyro3:start_gyro4-offset_gyro3]
                                             indices, propriedades = find_peaks(y3)
                                             indices = indices + start_gyro3
                                             # Ordenar picos por altura
-                                            picos_ordenados = np.argsort(ap_acc[indices])[-2:]  # dois maiores picos
+                                            picos_ordenados = np.argsort(acc_norm_filtered[indices])[-2:]  # dois maiores picos
                                             # Extrair valores e momentos
-                                            maiores_picos3ap_acc = ap_acc[indices][picos_ordenados]
+                                            maiores_picos3ap_acc = acc_norm_filtered[indices][picos_ordenados]
                                             momentos_picos3ap_acc = time_interpolated[indices][picos_ordenados]
                                             if momentos_picos3ap_acc[0] > momentos_picos3ap_acc[1]:
                                                 t_acc_ap_pico_levantar_ciclo_3 = momentos_picos3ap_acc[1]
@@ -583,13 +583,13 @@ with col1:
                                                 t_acc_ap_pico_sentar_ciclo_3 = momentos_picos3ap_acc[1]
                                                 t_acc_ap_pico_levantar_ciclo_3 = momentos_picos3ap_acc[0]
 
-                                            y4 = ap_acc[start_gyro4:offset_gyro4]
+                                            y4 = acc_norm_filtered[start_gyro4:offset_gyro4]
                                             indices, propriedades = find_peaks(y4)
                                             indices = indices + start_gyro4
                                             # Ordenar picos por altura
-                                            picos_ordenados = np.argsort(ap_acc[indices])[-2:]  # dois maiores picos
+                                            picos_ordenados = np.argsort(acc_norm_filtered[indices])[-2:]  # dois maiores picos
                                             # Extrair valores e momentos
-                                            maiores_picos4ap_acc = ap_acc[indices][picos_ordenados]
+                                            maiores_picos4ap_acc = acc_norm_filtered[indices][picos_ordenados]
                                             momentos_picos4ap_acc = time_interpolated[indices][picos_ordenados]
                                             if momentos_picos4ap_acc[0] > momentos_picos4ap_acc[1]:
                                                 t_acc_ap_pico_levantar_ciclo_4 = momentos_picos4ap_acc[1]
@@ -970,6 +970,11 @@ with col1:
                                             ax5.set_xlim([5,25])
                                             st.pyplot(fig5)
 
+
+
+
+                                            
+
                                             fig6, ax6 = plt.subplots(
                                                 figsize=(10, 4))
                                             ax6.plot(
@@ -982,6 +987,10 @@ with col1:
                                                 [momentos_picosml[0],momentos_picosml[0]], [0,30], 'r--')
                                             ax6.plot(
                                                 [momentos_picosml[1],momentos_picosml[1]], [0,30], 'r--')
+                                            ax6.plot(
+                                                [momentos_picosap_acc[0],momentos_picosap_acc[0]], [0,30], 'b--')
+                                            ax6.plot(
+                                                [momentos_picosap_acc[1],momentos_picosap_acc[1]], [0,30], 'b--')
                                             
                                             
                                             
@@ -1661,6 +1670,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
