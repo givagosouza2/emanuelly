@@ -966,7 +966,7 @@ with col1:
                                             ax5.plot([0, 0], [0, 30], 'r--')
                                             ax5.set_xlabel("Tempo (s)")
                                             ax5.set_ylabel("Velocidade angular ML")
-                                            ax5.set_ylim([0,3])
+                                            ax5.set_ylim([0,5])
                                             ax5.set_xlim([5,25])
                                             st.pyplot(fig5)
 
@@ -1682,6 +1682,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
