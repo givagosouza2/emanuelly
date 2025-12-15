@@ -915,21 +915,21 @@ with col1:
                                                 [time_interpolated_gyro[start_gyro4-offset_gyro4],time_interpolated_gyro[start_gyro4-offset_gyro4]], [0,30], 'y--')
 
                                             ax5.plot(
-                                                [momentos_picosml[0],momentos_picosml[0]], [0,30], 'r--')
+                                                [momentos_picosml[0],momentos_picosml[0]], [0,30], 'ro')
                                             ax5.plot(
-                                                [momentos_picosml[1],momentos_picosml[1]], [0,30], 'r--')
+                                                [momentos_picosml[1],momentos_picosml[1]], [0,30], 'ro')
                                             ax5.plot(
-                                                [momentos_picos2ml[0],momentos_picos2ml[0]], [0,30], 'r--')
+                                                [momentos_picos2ml[0],momentos_picos2ml[0]], [0,30], 'ro')
                                             ax5.plot(
-                                                [momentos_picos2ml[1],momentos_picos2ml[1]], [0,30], 'r--')
+                                                [momentos_picos2ml[1],momentos_picos2ml[1]], [0,30], 'ro')
                                             ax5.plot(
-                                                [momentos_picos3ml[0],momentos_picos3ml[0]], [0,30], 'r--')
+                                                [momentos_picos3ml[0],momentos_picos3ml[0]], [0,30], 'ro')
                                             ax5.plot(
-                                                [momentos_picos3ml[1],momentos_picos3ml[1]], [0,30], 'r--')
+                                                [momentos_picos3ml[1],momentos_picos3ml[1]], [0,30], 'ro')
                                             ax5.plot(
-                                                [momentos_picos4ml[0],momentos_picos4ml[0]], [0,30], 'r--')
+                                                [momentos_picos4ml[0],momentos_picos4ml[0]], [0,30], 'ro')
                                             ax5.plot(
-                                                [momentos_picos4ml[1],momentos_picos4ml[1]], [0,30], 'r--')
+                                                [momentos_picos4ml[1],momentos_picos4ml[1]], [0,30], 'ro')
                                             
                                             #ax.plot(
                                                 #[time_original_kinem[onsets[0]],time_original_kinem[onsets[0]]], [0,30], 'b-',linewidth=largura)
@@ -1682,6 +1682,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
