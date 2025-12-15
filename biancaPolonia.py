@@ -977,7 +977,7 @@ with col1:
                                             ax6.plot(
                                                 [time_interpolated_gyro[onset_gyro+start_gyro],time_interpolated_gyro[onset_gyro+start_gyro]], [0,30], 'y--')
                                             ax6.plot(
-                                                [time_interpolated_gyro[start_gyro2-offset_gyro],time_interpolated_gyro[start_gyro2-offset_gyro]], [0,30], 'y--')
+                                                [time_interpolated_gyro[start_gyro2-offset_gyro],time_interpolated_gyro[start_gyro2-offset_gyro]], [0,30], 'b--')
                                             ax6.plot(
                                                 [momentos_picosml[0],momentos_picosml[0]], [0,30], 'r--')
                                             ax6.plot(
@@ -1661,6 +1661,7 @@ with col1:
                                             )
                                             
                                             
+
 
 
 
